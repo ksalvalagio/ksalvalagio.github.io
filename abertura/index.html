@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kagio • Turma de Abertura</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACNUlEQVR4nO2UsWsUQRTGv/dmdnZ29/bu9sKdXgISi4BJIWglYuP/oFiIjaXov6DYxdrO0tJKBJuQfyEWthaWQi7R5Exu93ZnZyzOAxXE3U00CPc1AzOP9/3mm8cACy10xqIqRSw86Yfdm8xi6ECiLLJ3eXr43jnrAICI4IfJNeHpy9PJwSuTpweAqwQgqxTZsjC2LD6F7XNbtjQYH38O5+YAwTkH4ekbZZFu1zGvJSGU1xuuT+Ol1Te/nrFUyvOjfpO+XLmSwAAUQOLnfYIQKimmk9HfBfiNpKc7pcn2m8Z+IgAWngTgbGlM4x6N3YkgpEpMno0b92gCQOQ8ABDSD0qTfznpxNdPwLk9FlJKT1+0ZdE4+sYAziEP4sFDHQ+2iEWlj+xUAQDHgMukVCtBa+nWbK85R4MZYJWORy/KIvuoo+SlkH5wkjmoD8A8sNbY7Gj/NrGnw3jw7PvJvwFw1k4BIEsPdvLs6K0K249U0FmbpVAfoj4AyAIEOIfsaHTfOYcw7r9mltzkKeoAOAAWQDk3KqbHu3l6+ER4ekPH/QezslkKxLJS78oARMIHEQsWaz9GnX4dbZZmuqej5LnS8eocLmgt3T01AGLBftC5Y435AILQUfcqEQFEKE2eT8a71wlA2FnekSrsqqC9qnT7adXL/RmAmJglEzERM7GQAjRPYbb6YXejN1wvessbzo+SK6dmXkfC01Grd2EzGV4qWsnK4zOBAACpwm7UPn/vzAAWWui/0jclorMeQBZqqgAAAABJRU5ErkJggg==">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
+
+  :root{
+    color-scheme: dark;
+    --ink:          #0F1E33;
+    --ink-soft:     #16283F;
+    --ink-softer:   #1C3350;
+    --ink-line:     rgba(246,241,231,0.14);
+    --ink-line-strong: rgba(246,241,231,0.30);
+    --paper:        #F6F1E7;
+    --paper-dim:    rgba(246,241,231,0.70);
+    --paper-dimmer: rgba(246,241,231,0.46);
+    --gold:         #C7A05A;
+    --gold-dim:     rgba(199,160,90,0.55);
+    --coral:        #E8654A;
+    --coral-ink:    #2B0D06;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Figtree', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{ text-wrap:balance; margin:0; font-weight:800; letter-spacing:-0.01em; }
+  p{ margin:0; }
+  a{ color:inherit; }
+  .num{ font-variant-numeric:tabular-nums; }
+
+  .wrap{ max-width:880px; margin-inline:auto; padding-inline:24px; }
+  @media (min-width:720px){ .wrap{ padding-inline:40px; } }
+
+  .eyebrow{
+    font-size:0.72rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--gold); display:flex; align-items:center; gap:10px; justify-content:center;
+  }
+  .eyebrow::before{ content:""; width:22px; height:1px; background:var(--gold-dim); display:block; }
+
+  .nav{
+    padding-block:20px; border-bottom:1px solid var(--ink-line); text-align:center;
+  }
+  .brand-k{ font-size:1.1rem; font-weight:900; letter-spacing:0.06em; }
+  .brand-m{ font-size:0.66rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-top:3px; display:block; }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; white-space:nowrap;
+    font-family:inherit; font-weight:700; font-size:0.92rem; letter-spacing:0.01em;
+    padding:14px 26px; border-radius:999px; border:1px solid transparent;
+    text-decoration:none; cursor:pointer; transition:transform .15s, background .15s;
+  }
+  .btn:active{ transform:scale(0.97); }
+  .btn-coral{ background:var(--coral); color:var(--coral-ink); }
+  .btn-coral:hover{ background:#f07a5f; }
+
+  .hero{ padding-block:64px 48px; text-align:center; }
+  .hero h1{ font-size:clamp(1.9rem, 5.4vw, 2.9rem); line-height:1.12; margin-top:18px; }
+  .hero h1 em{ font-style:normal; color:var(--gold); }
+  .hero p.lede{ margin-top:20px; font-size:1.05rem; color:var(--paper-dim); max-width:54ch; margin-inline:auto; }
+
+  .badge-row{ display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin-top:26px; }
+  .badge{
+    font-size:0.76rem; padding:8px 14px; border:1px solid var(--ink-line-strong); border-radius:999px; color:var(--paper-dim);
+  }
+
+  section{ padding-block:48px; border-top:1px solid var(--ink-line); }
+  section .head{ max-width:640px; margin-inline:auto; text-align:center; }
+  section h2{ font-size:clamp(1.4rem, 3.2vw, 1.9rem); margin-top:14px; }
+  section .head p{ margin-top:14px; color:var(--paper-dim); font-size:1rem; }
+
+  .offer-card{
+    margin-top:40px; background:var(--ink-soft); border:1px solid var(--gold-dim); border-radius:20px;
+    padding:40px 32px; text-align:center;
+  }
+  .offer-card .tag{
+    display:inline-block; font-size:0.7rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--coral-ink); background:var(--coral); padding:6px 14px; border-radius:999px;
+  }
+  .offer-card .price{ margin-top:20px; font-size:clamp(2.4rem,7vw,3.4rem); font-weight:900; color:var(--paper); }
+  .offer-card .price small{ font-size:1rem; font-weight:600; color:var(--paper-dimmer); display:block; margin-top:6px; }
+  .offer-card .note{ margin-top:14px; font-size:0.88rem; color:var(--paper-dim); max-width:46ch; margin-inline:auto; }
+  .offer-card .btn{ margin-top:28px; }
+
+  .includes{ margin-top:36px; display:grid; gap:16px; text-align:left; }
+  @media (min-width:640px){ .includes{ grid-template-columns:repeat(2,1fr); } }
+  .includes .item{ display:flex; gap:12px; padding:16px; background:var(--ink-soft); border:1px solid var(--ink-line); border-radius:14px; }
+  .includes .item .ico{
+    flex:none; width:32px; height:32px; border-radius:9px; background:var(--ink-softer); border:1px solid var(--ink-line-strong);
+    display:flex; align-items:center; justify-content:center; color:var(--gold); font-weight:800; font-size:0.82rem;
+  }
+  .includes .item p{ font-size:0.9rem; color:var(--paper-dim); }
+  .includes .item strong{ color:var(--paper); display:block; margin-bottom:3px; font-size:0.94rem; }
+
+  .why{ background:var(--ink-soft); border-top:1px solid var(--ink-line); border-bottom:1px solid var(--ink-line); }
+  .why-grid{ margin-top:32px; display:grid; gap:18px; }
+  @media (min-width:640px){ .why-grid{ grid-template-columns:repeat(2,1fr); } }
+  .why-item{ padding:20px; background:var(--ink); border:1px solid var(--ink-line); border-radius:14px; }
+  .why-item .q{ font-weight:900; color:var(--gold); font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em; }
+  .why-item p{ margin-top:8px; font-size:0.92rem; color:var(--paper-dim); }
+
+  .final{ text-align:center; padding-block:64px; }
+  .final h2{ font-size:clamp(1.6rem,4vw,2.3rem); max-width:22ch; margin-inline:auto; }
+  .final p{ margin-top:14px; color:var(--paper-dim); max-width:46ch; margin-inline:auto; }
+  .final .btn{ margin-top:26px; }
+  .final .fine-note{ margin-top:16px; font-size:0.78rem; color:var(--paper-dimmer); }
+
+  footer{ border-top:1px solid var(--ink-line); padding-block:36px; text-align:center; }
+  footer .fine{ margin-top:14px; font-size:0.74rem; color:var(--paper-dimmer); }
+  footer a.ig{ text-decoration:none; color:var(--paper-dim); }
+  footer a.ig:hover{ color:var(--gold); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="brand-k">KAGIO</span>
+  <span class="brand-m">Mentoria Financeira</span>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">TURMA DE ABERTURA</p>
+    <h1>As primeiras vagas da mentoria Kagio estão abrindo — <em>com condições especiais</em>.</h1>
+    <p class="lede">Essa primeira turma vai ter um jeito diferente de entrar: prioridade e condições que não vão se repetir depois. Quem quiser saber os detalhes antes de todo mundo entra na lista de espera.</p>
+    <div class="badge-row">
+      <span class="badge">Vagas limitadas</span>
+      <span class="badge">Acompanhamento individual, comigo</span>
+      <span class="badge">Prioridade pra quem entra na lista</span>
+    </div>
+  </div>
+</header>
+
+<section id="oferta">
+  <div class="wrap">
+    <div class="offer-card">
+      <span class="tag">Lista de espera</span>
+      <p style="margin-top:20px; font-size:1.2rem; font-weight:800; color:var(--paper);">Garanta sua prioridade na turma de abertura</p>
+      <p class="note">Ao entrar na lista, você é avisada em primeira mão quando as vagas abrirem — com as condições especiais que só valem pra essa primeira turma.</p>
+      <a class="btn btn-coral" id="wa-offer" href="https://forms.gle/tZM6BGJRB6anDbRK7" target="_blank" rel="noopener">Quero entrar na lista de espera</a>
+    </div>
+
+    <div class="includes">
+      <div class="item">
+        <span class="ico">01</span>
+        <div>
+          <strong>Diagnóstico financeiro completo</strong>
+          <p>Seu raio-x financeiro, sem julgamento, logo no início do acompanhamento.</p>
+        </div>
+      </div>
+      <div class="item">
+        <span class="ico">02</span>
+        <div>
+          <strong>Painel Financeiro personalizado</strong>
+          <p>Orçamento, dívidas, metas e investimentos organizados num só lugar.</p>
+        </div>
+      </div>
+      <div class="item">
+        <span class="ico">03</span>
+        <div>
+          <strong>Plano de Ação sob medida</strong>
+          <p>Passos específicos pra sua realidade, nunca uma lista genérica.</p>
+        </div>
+      </div>
+      <div class="item">
+        <span class="ico">04</span>
+        <div>
+          <strong>Suporte pelo WhatsApp</strong>
+          <p>Suas dúvidas não esperam até o próximo encontro.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">POR QUE AGORA</p>
+      <h2>Por que entrar na lista agora</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <p class="q">Turma de abertura</p>
+        <p>Essa primeira turma tem condições que marcam o início da mentoria Kagio como programa — não vão se repetir nas próximas.</p>
+      </div>
+      <div class="why-item">
+        <p class="q">Vagas limitadas</p>
+        <p>O acompanhamento é individual e conduzido por mim do início ao fim, então o número de vagas por turma é limitado — quem está na lista tem prioridade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="contato">
+  <div class="wrap">
+    <p class="eyebrow" style="justify-content:center;">PRÓXIMO PASSO</p>
+    <h2>Entre na lista de espera da turma de abertura.</h2>
+    <p>Leva menos de um minuto — e você fica sabendo em primeira mão quando as vagas abrirem.</p>
+    <a class="btn btn-coral" id="wa-final" href="https://forms.gle/tZM6BGJRB6anDbRK7" target="_blank" rel="noopener">Quero entrar na lista de espera</a>
+    <p class="fine-note">Vagas limitadas para esta primeira turma.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="ig" href="https://instagram.com/ksalvalagio" target="_blank" rel="noopener">@ksalvalagio</a>
+    <p class="fine">© Kagio • Mentoria Financeira</p>
+  </div>
+</footer>
+
+</body>
+</html>
