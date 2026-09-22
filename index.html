@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kagio Mentoria Financeira</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
+
+  :root{
+    color-scheme: dark;
+    --ink:          #0F1E33;
+    --ink-soft:     #16283F;
+    --ink-softer:   #1C3350;
+    --ink-line:     rgba(246,241,231,0.14);
+    --ink-line-strong: rgba(246,241,231,0.30);
+    --paper:        #F6F1E7;
+    --paper-dim:    rgba(246,241,231,0.70);
+    --paper-dimmer: rgba(246,241,231,0.46);
+    --gold:         #C7A05A;
+    --gold-dim:     rgba(199,160,90,0.55);
+    --coral:        #E8654A;
+    --coral-ink:    #2B0D06;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Figtree', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{ text-wrap:balance; margin:0; font-weight:800; letter-spacing:-0.01em; }
+  p{ margin:0; }
+  a{ color:inherit; }
+  .num{ font-variant-numeric:tabular-nums; }
+
+  .wrap{ max-width:1120px; margin-inline:auto; padding-inline:24px; }
+  @media (min-width:720px){ .wrap{ padding-inline:40px; } }
+
+  .eyebrow{
+    font-size:0.72rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--gold); display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{ content:""; width:22px; height:1px; background:var(--gold-dim); display:block; }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky; top:env(safe-area-inset-top,0px); z-index:50;
+    background:rgba(15,30,51,0.86); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--ink-line);
+  }
+  .nav .wrap{ display:flex; align-items:center; justify-content:space-between; padding-block:16px; }
+  .brand{ display:flex; flex-direction:column; line-height:1.05; }
+  .brand .k{ font-size:1.05rem; font-weight:900; letter-spacing:0.06em; }
+  .brand .m{ font-size:0.66rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-top:3px; }
+  .nav-links{ display:none; gap:32px; font-size:0.9rem; color:var(--paper-dim); }
+  @media (min-width:800px){ .nav-links{ display:flex; } }
+  .nav-links a{ text-decoration:none; transition:color .15s; }
+  .nav-links a:hover{ color:var(--paper); }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; white-space:nowrap;
+    font-family:inherit; font-weight:700; font-size:0.86rem; letter-spacing:0.01em;
+    padding:12px 22px; border-radius:999px; border:1px solid transparent;
+    text-decoration:none; cursor:pointer; transition:transform .15s, background .15s, border-color .15s;
+  }
+  .btn:active{ transform:scale(0.97); }
+  .btn-coral{ background:var(--coral); color:var(--coral-ink); }
+  .btn-coral:hover{ background:#f07a5f; }
+  .btn-ghost{ background:transparent; color:var(--paper); border-color:var(--ink-line-strong); }
+  .btn-ghost:hover{ border-color:var(--gold); color:var(--gold); }
+  .btn-sm{ padding:9px 16px; font-size:0.78rem; }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding-block:72px 88px; position:relative; overflow:hidden; }
+  .hero .wrap{ display:grid; gap:40px; }
+  @media (min-width:900px){ .hero .wrap{ grid-template-columns:1.1fr 0.9fr; align-items:center; gap:24px; } }
+  .hero h1{ font-size:clamp(2.1rem, 5vw, 3.4rem); line-height:1.06; margin-top:18px; }
+  .hero h1 em{ font-style:normal; color:var(--gold); }
+  .hero p.lede{ margin-top:22px; font-size:1.08rem; color:var(--paper-dim); max-width:46ch; }
+  .hero .cta-row{ display:flex; flex-wrap:wrap; gap:14px; margin-top:32px; }
+  .hero .credential{
+    margin-top:34px; display:flex; flex-wrap:wrap; gap:10px 22px; font-size:0.82rem; color:var(--paper-dimmer);
+  }
+  .hero .credential span{ display:flex; align-items:center; gap:8px; }
+  .hero .credential span::before{ content:"—"; color:var(--gold); }
+
+  .hero-chart{
+    background:var(--ink-soft); border:1px solid var(--ink-line); border-radius:20px;
+    padding:26px 24px 22px;
+  }
+  .hero-chart .top{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:16px; }
+  .hero-chart .top .lbl{ font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--paper-dimmer); }
+  .hero-chart .top .val{ font-size:1.5rem; font-weight:800; color:var(--paper); }
+  .hero-chart svg{ width:100%; height:auto; display:block; }
+  .hero-chart .foot{ display:flex; justify-content:space-between; margin-top:14px; font-size:0.72rem; color:var(--paper-dimmer); }
+  .hero-chart .foot .up{ color:#9fd6a8; font-weight:700; }
+
+  /* ---------- SECTION shell ---------- */
+  section{ padding-block:64px; border-top:1px solid var(--ink-line); }
+  section .head{ max-width:640px; }
+  section h2{ font-size:clamp(1.5rem, 3.4vw, 2.1rem); margin-top:14px; }
+  section .head p{ margin-top:14px; color:var(--paper-dim); font-size:1rem; }
+
+  /* ---------- PARA QUEM ---------- */
+  .audience-grid{ margin-top:40px; display:grid; gap:1px; background:var(--ink-line); border:1px solid var(--ink-line); border-radius:16px; overflow:hidden; }
+  @media (min-width:760px){ .audience-grid{ grid-template-columns:repeat(3,1fr); } }
+  .audience-card{ background:var(--ink); padding:28px 26px; display:flex; flex-direction:column; gap:14px; }
+  .audience-card .tag{ font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); font-weight:700; }
+  .audience-card h3{ font-size:1.08rem; font-weight:700; }
+  .audience-card p{ font-size:0.9rem; color:var(--paper-dim); }
+
+  /* ---------- COMO FUNCIONA (timeline) ---------- */
+  .timeline{ margin-top:44px; display:flex; flex-direction:column; }
+  .tl-row{ display:grid; grid-template-columns:56px 1fr; gap:22px; padding-block:22px; border-top:1px solid var(--ink-line); }
+  .tl-row:first-child{ border-top:1px solid var(--ink-line-strong); }
+  .tl-num{ font-size:1.3rem; font-weight:800; color:var(--gold); font-variant-numeric:tabular-nums; }
+  .tl-body h3{ font-size:1.02rem; font-weight:700; }
+  .tl-body p{ margin-top:6px; color:var(--paper-dim); font-size:0.92rem; max-width:58ch; }
+  .method-meta{
+    margin-top:30px; display:flex; flex-wrap:wrap; gap:12px;
+  }
+  .method-meta span{
+    font-size:0.78rem; padding:8px 14px; border:1px solid var(--ink-line-strong); border-radius:999px; color:var(--paper-dim);
+  }
+
+  /* ---------- DIAGNÓSTICO banner ---------- */
+  .diag{ background:var(--ink-soft); border-top:1px solid var(--ink-line); border-bottom:1px solid var(--ink-line); }
+  .diag .grid{ margin-top:32px; display:grid; gap:14px; }
+  @media (min-width:640px){ .diag .grid{ grid-template-columns:1fr 1fr; } }
+  .diag-item{
+    display:flex; gap:14px; align-items:flex-start; padding:18px; background:var(--ink); border:1px solid var(--ink-line); border-radius:14px;
+  }
+  .diag-item .q{ font-weight:900; color:var(--gold); font-size:1rem; line-height:1.4; }
+  .diag-item p{ font-size:0.92rem; color:var(--paper-dim); }
+  .diag .cta{ margin-top:32px; display:flex; flex-wrap:wrap; align-items:center; gap:18px; }
+  .diag .cta .note{ font-size:0.82rem; color:var(--paper-dimmer); max-width:36ch; }
+
+  /* ---------- BENEFÍCIOS ---------- */
+  .benefits{ margin-top:40px; display:grid; gap:18px; }
+  @media (min-width:700px){ .benefits{ grid-template-columns:repeat(2,1fr); } }
+  .benefit{ display:flex; gap:16px; padding-block:18px; border-top:1px solid var(--ink-line); }
+  .benefit .ico{
+    flex:none; width:38px; height:38px; border-radius:10px; background:var(--ink-soft); border:1px solid var(--ink-line-strong);
+    display:flex; align-items:center; justify-content:center; color:var(--gold); font-weight:800; font-size:0.9rem;
+  }
+  .benefit h3{ font-size:0.98rem; font-weight:700; }
+  .benefit p{ margin-top:5px; font-size:0.88rem; color:var(--paper-dim); }
+
+  /* ---------- SOBRE ---------- */
+  .about{ display:grid; gap:36px; margin-top:8px; }
+  @media (min-width:860px){ .about{ grid-template-columns:220px 1fr; align-items:start; } }
+  .avatar{
+    width:150px; height:150px; border-radius:50%; overflow:hidden; flex:none;
+    border:1px solid var(--gold-dim); background:var(--ink-soft);
+  }
+  .avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .about-body p{ color:var(--paper-dim); font-size:1rem; max-width:64ch; }
+  .about-body p + p{ margin-top:14px; }
+  .about-body .sig{ margin-top:20px; font-size:0.85rem; color:var(--paper-dimmer); border-left:2px solid var(--gold); padding-left:14px; }
+
+  /* ---------- INVESTIMENTO ---------- */
+  .invest-card{
+    margin-top:36px; background:var(--ink-soft); border:1px solid var(--ink-line-strong); border-radius:20px;
+    padding:36px 30px; display:grid; gap:26px;
+  }
+  @media (min-width:760px){ .invest-card{ grid-template-columns:1fr auto; align-items:center; } }
+  .invest-card h3{ font-size:1.2rem; font-weight:800; }
+  .invest-card p{ margin-top:10px; color:var(--paper-dim); font-size:0.94rem; max-width:52ch; }
+  .invest-facts{ display:flex; gap:26px; margin-top:18px; flex-wrap:wrap; }
+  .invest-facts div{ display:flex; flex-direction:column; }
+  .invest-facts .n{ font-size:1.3rem; font-weight:800; color:var(--gold); font-variant-numeric:tabular-nums; }
+  .invest-facts .l{ font-size:0.72rem; color:var(--paper-dimmer); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px; }
+
+  /* ---------- FOOTER / CTA final ---------- */
+  .final{ text-align:center; padding-block:80px; }
+  .final h2{ font-size:clamp(1.7rem,4.4vw,2.6rem); max-width:20ch; margin-inline:auto; }
+  .final p{ margin-top:16px; color:var(--paper-dim); max-width:48ch; margin-inline:auto; }
+  .final .cta-row{ display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:30px; }
+
+  footer{ border-top:1px solid var(--ink-line); padding-block:36px; }
+  footer .wrap{ display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between; }
+  footer .contact-line{ display:flex; flex-wrap:wrap; gap:16px; align-items:center; font-size:0.85rem; color:var(--paper-dim); }
+  footer .phone-copy{
+    display:inline-flex; align-items:center; gap:8px; background:var(--ink-soft); border:1px solid var(--ink-line-strong);
+    padding:7px 12px; border-radius:999px; cursor:pointer; font-family:inherit; font-size:0.82rem; color:var(--paper); font-variant-numeric:tabular-nums;
+  }
+  footer .phone-copy:hover{ border-color:var(--gold); }
+  footer .fine{ margin-top:18px; font-size:0.74rem; color:var(--paper-dimmer); }
+  footer a.ig{ text-decoration:none; color:var(--paper-dim); }
+  footer a.ig:hover{ color:var(--gold); }
+
+  .sr-only{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
+
+  [data-animate]{ opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease; }
+  [data-animate].in{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){ [data-animate]{ opacity:1; transform:none; transition:none; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="brand">
+      <span class="k">KAGIO</span>
+      <span class="m">Mentoria Financeira</span>
+    </div>
+    <div class="nav-links">
+      <a href="#quem">Pra quem é</a>
+      <a href="#metodo">Método</a>
+      <a href="#diagnostico">Diagnóstico</a>
+      <a href="#sobre">Sobre</a>
+    </div>
+    <a class="btn btn-coral btn-sm" href="#diagnostico">Diagnóstico gratuito</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">MENTORIA FINANCEIRA · 5 SESSÕES · 3 MESES</p>
+      <h1>Organizar o dinheiro não é sobre <em>força de vontade</em>. É sobre método.</h1>
+      <p class="lede">Mentoria financeira para mulheres que sentem que o dinheiro nunca sobra — mesmo trabalhando duro. Sem julgamento, sem fórmula genérica: um método aplicado à sua realidade, sessão por sessão.</p>
+      <div class="cta-row">
+        <a class="btn btn-coral" href="#diagnostico">Quero um diagnóstico gratuito</a>
+        <a class="btn btn-ghost" href="#metodo">Como funciona ↓</a>
+      </div>
+      <div class="credential">
+        <span>Contadora</span>
+        <span>Educadora Financeira Profissional certificada (FinPro)</span>
+        <span>Pós-graduada em Finanças e Controladoria</span>
+      </div>
+    </div>
+
+    <div class="hero-chart" data-animate>
+      <div class="top">
+        <span class="lbl">Sobra mensal do orçamento</span>
+      </div>
+      <svg viewBox="0 0 320 140" aria-hidden="true">
+        <defs>
+          <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#C7A05A" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#C7A05A" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <polyline points="0,118 40,112 80,120 120,96 160,100 200,70 240,74 280,40 320,28" fill="none" stroke="rgba(246,241,231,0.18)" stroke-width="1" stroke-dasharray="2,4"/>
+        <path d="M0,118 L40,112 L80,120 L120,96 L160,100 L200,70 L240,74 L280,40 L320,28 L320,140 L0,140 Z" fill="url(#area)"/>
+        <polyline points="0,118 40,112 80,120 120,96 160,100 200,70 240,74 280,40 320,28" fill="none" stroke="#C7A05A" stroke-width="2.5"/>
+        <circle cx="320" cy="28" r="4.5" fill="#C7A05A"/>
+      </svg>
+      <div class="foot">
+        <span>Sessão 1</span>
+        <span class="up">↑ em construção, sessão a sessão</span>
+        <span>Sessão 5</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="quem">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">PRA QUEM É</p>
+      <h2>Se algo aqui soa familiar, a mentoria foi pensada pra você.</h2>
+    </div>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <span class="tag">Situação 1</span>
+        <h3>O dinheiro nunca sobra</h3>
+        <p>Mesmo ganhando bem, você não sabe explicar pra onde ele vai todo mês — e isso já virou uma ansiedade de fundo.</p>
+      </div>
+      <div class="audience-card">
+        <span class="tag">Situação 2</span>
+        <h3>Você tem dívidas e não sabe por onde começar</h3>
+        <p>Cartão, empréstimo, cheque especial — a sensação de patinar no mesmo lugar, tentando sozinha, sem um plano real.</p>
+      </div>
+      <div class="audience-card">
+        <span class="tag">Situação 3</span>
+        <h3>Você é autônoma e mistura tudo</h3>
+        <p>As contas da sua vida com as do seu negócio, sem clareza de quanto sobra de fato pra você no fim do mês.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="metodo">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">COMO FUNCIONA</p>
+      <h2>Cinco sessões. Um caminho claro do início ao fim.</h2>
+      <p>Cada sessão constrói em cima da anterior — sem pular etapa, sem te entregar uma planilha pronta sem explicação.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-row">
+        <span class="tl-num num">01</span>
+        <div class="tl-body">
+          <h3>Diagnóstico</h3>
+          <p>A gente entende sua relação com dinheiro sem julgamento, valida seu orçamento junto e monta seu primeiro raio-x financeiro.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-num num">02</span>
+        <div class="tl-body">
+          <h3>Consciência</h3>
+          <p>Contexto, crenças e hábitos financeiros — entender o padrão que te trouxe até aqui antes de tentar mudar ele.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-num num">03</span>
+        <div class="tl-body">
+          <h3>Metas e reserva</h3>
+          <p>Metas financeiras reais, simulação de reserva de emergência e um olhar honesto pra renda extra, se fizer sentido pra você.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-num num">04</span>
+        <div class="tl-body">
+          <h3>Primeiros investimentos</h3>
+          <p>Tipos de investimento, seu perfil como investidora e os primeiros passos — sem jargão, sem pressa.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-num num">05</span>
+        <div class="tl-body">
+          <h3>Plano final</h3>
+          <p>Tudo documentado num Plano de Ação que continua valendo depois que a mentoria termina.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="method-meta">
+      <span>3 meses de acompanhamento</span>
+      <span>Sessões de 1h30, por Google Meet</span>
+      <span>Suporte ilimitado pelo WhatsApp</span>
+    </div>
+  </div>
+</section>
+
+<section id="diagnostico" class="diag">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">DIAGNÓSTICO GRATUITO · 15 MINUTOS</p>
+      <h2>Antes de decidir, converse comigo — sem custo, sem compromisso.</h2>
+      <p>Em 15 minutos a gente conversa sobre 4 pontos. Só isso já costuma trazer clareza sobre onde você realmente está:</p>
+    </div>
+
+    <div class="grid">
+      <div class="diag-item">
+        <span class="q num">01</span>
+        <p>Pra onde vai o seu dinheiro hoje.</p>
+      </div>
+      <div class="diag-item">
+        <span class="q num">02</span>
+        <p>Quanto você deve, no total — se souber responder na hora.</p>
+      </div>
+      <div class="diag-item">
+        <span class="q num">03</span>
+        <p>O que mais pesa: uma dívida específica, falta de organização, ou a sensação de que nunca sobra.</p>
+      </div>
+      <div class="diag-item">
+        <span class="q num">04</span>
+        <p>O que você já tentou fazer sozinha — e por que não funcionou até agora.</p>
+      </div>
+    </div>
+
+    <div class="cta">
+      <a class="btn btn-coral" id="wa-diag" href="#" target="_blank" rel="noopener">Agendar meu diagnóstico gratuito</a>
+      <p class="note">Você fala comigo direto pelo WhatsApp — sem formulário, sem espera.</p>
+    </div>
+  </div>
+</section>
+
+<section id="beneficios">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">O QUE VOCÊ RECEBE</p>
+      <h2>Mais do que conversa: ferramentas que continuam com você.</h2>
+    </div>
+    <div class="benefits">
+      <div class="benefit">
+        <span class="ico">01</span>
+        <div>
+          <h3>Painel Financeiro personalizado</h3>
+          <p>Orçamento, dívidas, metas e investimentos organizados num só lugar, atualizado com você a cada sessão.</p>
+        </div>
+      </div>
+      <div class="benefit">
+        <span class="ico">02</span>
+        <div>
+          <h3>Análise completa do cartão de crédito</h3>
+          <p>Dívida por cartão, gastos por categoria e um plano de ação claro pra parar de rodar em círculos.</p>
+        </div>
+      </div>
+      <div class="benefit">
+        <span class="ico">03</span>
+        <div>
+          <h3>Plano de Ação a cada sessão</h3>
+          <p>Passos específicos pra sua realidade — nunca uma lista genérica de "dicas financeiras".</p>
+        </div>
+      </div>
+      <div class="benefit">
+        <span class="ico">04</span>
+        <div>
+          <h3>Suporte ilimitado pelo WhatsApp</h3>
+          <p>Durante os 3 meses de mentoria, suas dúvidas não esperam até a próxima sessão.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">SOBRE MIM</p>
+      <h2>Eu sou a Kariny.</h2>
+    </div>
+    <div class="about" style="margin-top:36px;">
+      <div class="avatar"><img src="data:image/jpeg;base64,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" alt="Foto de Kariny" loading="lazy"></div>
+      <div class="about-body">
+        <p>Sou contadora, graduada em Ciências Contábeis e pós-graduada em Finanças e Controladoria. Depois de anos vendo de perto como a desorganização financeira pesa — não só em empresas, mas na vida das pessoas por trás delas — me certifiquei como Educadora Financeira Profissional (FinPro) pra ajudar diretamente quem sente esse peso no dia a dia.</p>
+        <p>Atendo exclusivamente mulheres. É onde encontro a abertura de conversa que esse trabalho precisa: falar de dinheiro é, quase sempre, falar de outra coisa por trás.</p>
+        <p class="sig">Meu papel aqui nunca é te dizer o que você "tem que" fazer. É te dar clareza e um método — a decisão de seguir é sempre sua.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="investimento">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">INVESTIMENTO</p>
+      <h2>Vagas limitadas — a mentoria é conduzida por mim, do início ao fim.</h2>
+    </div>
+    <div class="invest-card">
+      <div>
+        <h3>Um plano definido na conversa, não numa tabela genérica</h3>
+        <p>O valor é combinado na conversa inicial, sem letras miúdas — porque o acompanhamento é sempre pensado pra sua situação específica, não pra um pacote fechado.</p>
+        <div class="invest-facts">
+          <div><span class="n num">5</span><span class="l">Sessões</span></div>
+          <div><span class="n num">3</span><span class="l">Meses</span></div>
+          <div><span class="n num">1h30</span><span class="l">Por sessão</span></div>
+        </div>
+      </div>
+      <a class="btn btn-coral" id="wa-invest" href="#" target="_blank" rel="noopener">Falar sobre valores</a>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="contato">
+  <div class="wrap">
+    <p class="eyebrow" style="justify-content:center;">PRÓXIMO PASSO</p>
+    <h2>O primeiro passo é uma conversa de 15 minutos.</h2>
+    <p>Sem planilha pra preencher antes, sem compromisso. Só clareza sobre onde você está agora.</p>
+    <div class="cta-row">
+      <a class="btn btn-coral" id="wa-final" href="#" target="_blank" rel="noopener">Quero meu diagnóstico gratuito</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="contact-line">
+      <a class="ig" href="https://instagram.com/ksalvalagio" target="_blank" rel="noopener">@ksalvalagio</a>
+      <button class="phone-copy" id="phone-copy-btn" type="button">
+        <span id="phone-copy-text">(66) 99256-8559</span>
+        <span aria-hidden="true">⧉</span>
+      </button>
+    </div>
+    <div class="brand">
+      <span class="k" style="font-size:0.9rem;">KAGIO</span>
+      <span class="m">Consultoria e Gestão</span>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="fine">Kagio Consultoria e Gestão · Mentoria Financeira</p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    // ---- WhatsApp links: single source of truth for the number ----
+    var WHATSAPP_NUMBER = "5566992568559";
+    var msgDiag = encodeURIComponent("Oi, Kariny! Vi seu site e quero agendar meu diagnóstico financeiro gratuito de 15 minutos.");
+    var msgInvest = encodeURIComponent("Oi, Kariny! Vi seu site e quero saber mais sobre valores da mentoria financeira.");
+    var base = "https://wa.me/" + WHATSAPP_NUMBER + "?text=";
+
+    var d1 = document.getElementById('wa-diag');
+    var d2 = document.getElementById('wa-final');
+    var d3 = document.getElementById('wa-invest');
+    if(d1) d1.href = base + msgDiag;
+    if(d2) d2.href = base + msgDiag;
+    if(d3) d3.href = base + msgInvest;
+
+    // ---- copy phone number ----
+    var btn = document.getElementById('phone-copy-btn');
+    var label = document.getElementById('phone-copy-text');
+    if(btn){
+      btn.addEventListener('click', function(){
+        var original = label.textContent;
+        var text = "(66) 99256-8559";
+        function done(ok){
+          label.textContent = ok ? "Copiado!" : original;
+          setTimeout(function(){ label.textContent = original; }, 1600);
+        }
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(text).then(function(){ done(true); }, function(){ done(false); });
+        } else {
+          done(false);
+        }
+      });
+    }
+
+    // ---- reveal on scroll ----
+    var targets = document.querySelectorAll('[data-animate]');
+    if('IntersectionObserver' in window && targets.length){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, {threshold:0.2});
+      targets.forEach(function(t){ io.observe(t); });
+    } else {
+      targets.forEach(function(t){ t.classList.add('in'); });
+    }
+  })();
+</script>
+
+</body>
+</html>
