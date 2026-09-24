@@ -203,19 +203,17 @@
   .final p{ margin-top:16px; color:var(--paper-dim); max-width:48ch; margin-inline:auto; }
   .final .cta-row{ display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:30px; }
 
-  footer{ border-top:1px solid var(--ink-line); padding-block:36px; }
-  footer .wrap{ display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between; }
-  footer .contact-line{ display:flex; flex-wrap:wrap; gap:16px; align-items:center; font-size:0.85rem; color:var(--paper-dim); }
-  footer .phone-copy{
-    display:inline-flex; align-items:center; gap:8px; background:var(--ink-soft); border:1px solid var(--ink-line-strong);
-    padding:7px 12px; border-radius:999px; cursor:pointer; font-family:inherit; font-size:0.82rem; color:var(--paper); font-variant-numeric:tabular-nums;
-    text-decoration:none;
+footer{ border-top:1px solid var(--ink-line); padding-block:36px; }
+footer .wrap{ display:flex; flex-wrap:wrap; gap:20px; align-items:center; justify-content:center; font-size:0.85rem; color:var(--paper-dim); }
+footer .phone-copy{
+  display:inline-flex; align-items:center; gap:8px; background:var(--ink-soft); border:1px solid var(--ink-line-strong);
+  padding:7px 12px; border-radius:999px; cursor:pointer; font-family:inherit; font-size:0.82rem; color:var(--paper); font-variant-numeric:tabular-nums;
+  text-decoration:none;
 }
-  footer .phone-copy:hover{ border-color:var(--gold); }
-  footer .fine{ margin-top:18px; font-size:0.74rem; color:var(--paper-dimmer); }
-  footer a.ig{ text-decoration:none; color:var(--paper-dim); }
-  footer a.ig:hover{ color:var(--gold); }
-
+footer .phone-copy:hover{ border-color:var(--gold); }
+footer .fine{ font-size:0.74rem; color:var(--paper-dimmer); }
+footer a.ig{ text-decoration:none; color:var(--paper-dim); }
+footer a.ig:hover{ color:var(--gold); }
   .sr-only{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
 
   [data-animate]{ opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease; }
@@ -540,23 +538,14 @@
 
 <footer>
   <div class="wrap">
-    <div class="contact-line">
-      <a class="ig" href="https://instagram.com/ksalvalagio" target="_blank" rel="noopener">@ksalvalagio</a>
-            <a class="phone-copy" id="wa-footer" href="#" target="_blank" rel="noopener">
-        <span>(66) 99256-8559</span>
-        <span aria-hidden="true">↗</span>
-      </a>
-</div>
-    <div class="brand">
-      <span class="k" style="font-size:0.9rem;">KAGIO</span>
-      <span class="m">Mentoria Financeira</span>
-    </div>
-  </div>
-  <div class="wrap">
+    <a class="ig" href="https://instagram.com/ksalvalagio" target="_blank" rel="noopener">@ksalvalagio</a>
+    <a class="phone-copy" id="wa-footer" href="#" target="_blank" rel="noopener">
+      <span>(66) 99256-8559</span>
+      <span aria-hidden="true">↗</span>
+    </a>
     <p class="fine">© Kagio • Mentoria Financeira</p>
   </div>
 </footer>
-
 <script>
   (function(){
     // ---- WhatsApp links: single source of truth for the number ----
