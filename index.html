@@ -189,19 +189,6 @@
   .about-body p + p{ margin-top:14px; }
   .about-body .sig{ margin-top:20px; font-size:0.85rem; color:var(--paper-dimmer); border-left:2px solid var(--gold); padding-left:14px; }
 
-  /* ---------- INVESTIMENTO ---------- */
-  .invest-card{
-    margin-top:36px; background:var(--ink-soft); border:1px solid var(--ink-line-strong); border-radius:20px;
-    padding:36px 30px; display:grid; gap:26px;
-  }
-  @media (min-width:760px){ .invest-card{ grid-template-columns:1fr auto; align-items:center; } }
-  .invest-card h3{ font-size:1.2rem; font-weight:800; }
-  .invest-card p{ margin-top:10px; color:var(--paper-dim); font-size:0.94rem; max-width:52ch; }
-  .invest-facts{ display:flex; gap:26px; margin-top:18px; flex-wrap:wrap; }
-  .invest-facts div{ display:flex; flex-direction:column; }
-  .invest-facts .n{ font-size:1.3rem; font-weight:800; color:var(--gold); font-variant-numeric:tabular-nums; }
-  .invest-facts .l{ font-size:0.72rem; color:var(--paper-dimmer); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px; }
-
   /* ---------- FOOTER / CTA final ---------- */
   .final{ text-align:center; padding-block:80px; }
   .final h2{ font-size:clamp(1.7rem,4.4vw,2.6rem); max-width:20ch; margin-inline:auto; }
@@ -236,7 +223,7 @@ footer a.ig:hover{ color:var(--gold); }
       <a href="#diagnostico">Diagnóstico</a>
       <a href="#sobre">Sobre</a>
     </div>
-    <a class="btn btn-coral btn-sm" href="#diagnostico">Diagnóstico gratuito</a>
+    <a class="btn btn-coral btn-sm" href="#diagnostico">Agendar diagnóstico</a>
   </div>
 </nav>
 
@@ -245,15 +232,16 @@ footer a.ig:hover{ color:var(--gold); }
     <div>
       <p class="eyebrow">MENTORIA FINANCEIRA</p>
       <h1>Organizar o dinheiro não é sobre <em>força de vontade</em>. É sobre método.</h1>
-      <p class="lede">Mentoria financeira para mulheres que sentem que o dinheiro nunca sobra — mesmo trabalhando duro. Sem julgamento, sem fórmula genérica: um método aplicado à sua realidade, passo a passo.</p>
+      <p class="lede">Mentoria financeira para mulheres que sentem que o dinheiro nunca sobra — mesmo trabalhando duro. Sem julgamento, sem fórmula genérica: um acompanhamento contínuo, aplicado à sua realidade, enquanto fizer sentido pra você.</p>
       <div class="cta-row">
-        <a class="btn btn-coral" href="#diagnostico">Quero um diagnóstico gratuito</a>
+        <a class="btn btn-coral" href="#diagnostico">Agendar conversa de diagnóstico gratuita</a>
         <a class="btn btn-ghost" href="#metodo">Como funciona ↓</a>
       </div>
       <div class="credential">
         <span>Contadora</span>
-        <span>Educadora Financeira Profissional certificada (FinPro)</span>
         <span>Pós-graduada em Finanças e Controladoria</span>
+        <span>Educadora Financeira Profissional certificada (FinPro)</span>
+        <span>Certificação Oficial do Método Vista</span>
       </div>
     </div>
 
@@ -301,8 +289,47 @@ footer a.ig:hover{ color:var(--gold); }
       </div>
       <div class="audience-card">
         <span class="tag">Situação 3</span>
-        <h3>Você é autônoma e mistura tudo</h3>
-        <p>As contas da sua vida com as do seu negócio, sem clareza de quanto sobra de fato pra você no fim do mês.</p>
+        <h3>Você é autônoma, empresária ou tem um pequeno negócio</h3>
+        <p>As contas da sua vida pessoal se misturam com as do negócio, sem clareza de quanto sobra de fato pra você no fim do mês.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="valor">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">POR QUE TER UMA MENTORA FINANCEIRA</p>
+      <h2>Por que ter uma mentora financeira?</h2>
+    </div>
+    <div class="benefits">
+      <div class="benefit">
+        <span class="ico">01</span>
+        <div>
+          <h3>Clareza sobre sua situação real</h3>
+          <p>Diagnóstico completo do seu momento financeiro, sem julgamento.</p>
+        </div>
+      </div>
+      <div class="benefit">
+        <span class="ico">02</span>
+        <div>
+          <h3>Mudança de comportamento, não só de planilha</h3>
+          <p>Trabalhamos a relação com o dinheiro, não só os números.</p>
+        </div>
+      </div>
+      <div class="benefit">
+        <span class="ico">03</span>
+        <div>
+          <h3>Visão de quem entende pessoa física e empresa</h3>
+          <p>Experiência de contadora: seu bolso e seu negócio, juntos.</p>
+        </div>
+      </div>
+      <div class="benefit">
+        <span class="ico">04</span>
+        <div>
+          <h3>Menos sozinha, mais segura nas decisões</h3>
+          <p>Acompanhamento contínuo, não uma consultoria pontual.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -312,59 +339,47 @@ footer a.ig:hover{ color:var(--gold); }
   <div class="wrap">
     <div class="head">
       <p class="eyebrow">COMO FUNCIONA</p>
-      <h2>Um caminho claro, passo a passo, do início ao fim.</h2>
-      <p>Cada etapa constrói em cima da anterior — sem pular etapa, sem te entregar uma planilha pronta sem explicação.</p>
+      <h2>Um acompanhamento contínuo, em 3 fases — sem prazo mínimo, sem multa de cancelamento.</h2>
+      <p>É um acompanhamento que evolui com você, em 3 fases, e continua enquanto fizer sentido pra você.</p>
     </div>
 
     <div class="timeline">
       <div class="tl-row">
         <span class="tl-num num">01</span>
         <div class="tl-body">
-          <h3>Raio-X Financeiro</h3>
-          <p>Você preenche seu raio-x financeiro completo — orçamento, dívidas e cartões de crédito — com meu acompanhamento, pra chegarmos na primeira sessão com o terreno já mapeado.</p>
+          <h3>Fase 1 — Construção (meses 1 a 6)</h3>
+          <p>6 reuniões, uma por mês. A gente organiza orçamento, dívidas, patrimônio, seus planos e sonhos, aposentadoria e investimentos — o alicerce de tudo que vem depois.</p>
         </div>
       </div>
       <div class="tl-row">
         <span class="tl-num num">02</span>
         <div class="tl-body">
-          <h3>Diagnóstico</h3>
-          <p>A gente entende sua relação com dinheiro sem julgamento e valida juntas tudo que você levantou no raio-x, ajustando o orçamento onde for preciso.</p>
+          <h3>Fase 2 — Implementação (meses 7 a 12)</h3>
+          <p>3 a 4 reuniões. A gente ajusta o que não saiu como esperado, afina suas metas, e entra em orientação tributária e proteção financeira.</p>
         </div>
       </div>
       <div class="tl-row">
         <span class="tl-num num">03</span>
         <div class="tl-body">
-          <h3>Consciência</h3>
-          <p>Contexto, crenças e hábitos financeiros — entender o padrão que te trouxe até aqui antes de tentar mudar ele.</p>
-        </div>
-      </div>
-      <div class="tl-row">
-        <span class="tl-num num">04</span>
-        <div class="tl-body">
-          <h3>Metas e reserva</h3>
-          <p>Metas financeiras reais, simulação de reserva de emergência, um plano de quitação das suas dívidas (quando houver) e um olhar honesto pra renda extra, se fizer sentido pra você.</p>
-        </div>
-      </div>
-      <div class="tl-row">
-        <span class="tl-num num">05</span>
-        <div class="tl-body">
-          <h3>Primeiros investimentos</h3>
-          <p>Tipos de investimento, seu perfil como investidora e os primeiros passos — sem jargão, sem pressa.</p>
-        </div>
-      </div>
-      <div class="tl-row">
-        <span class="tl-num num">06</span>
-        <div class="tl-body">
-          <h3>Plano final</h3>
-          <p>Tudo documentado num Plano de Ação que continua valendo depois que a mentoria termina.</p>
+          <h3>Fase 3 — Acompanhamento (a partir do 2º ano)</h3>
+          <p>Reuniões bimestrais e uma revisão completa por ano, pra manter tudo alinhado enquanto você quiser continuar.</p>
         </div>
       </div>
     </div>
 
-    <div class="method-meta">
-      <span>Encontros de 1h30, por Google Meet</span>
-      <span>Suporte ilimitado pelo WhatsApp durante o período da mentoria</span>
+    <div class="head" style="margin-top:44px;">
+      <p class="eyebrow">JORNADA DO 1º SEMESTRE</p>
     </div>
+    <div class="method-meta">
+      <span>Mês 1 · Orçamento</span>
+      <span>Mês 2 · Dívidas e patrimônio</span>
+      <span>Mês 3 · Planos e sonhos</span>
+      <span>Mês 4 · Prioridades e investimentos</span>
+      <span>Mês 5 · Investimentos e proteção</span>
+      <span>Mês 6 · Resultados</span>
+    </div>
+
+    <p style="margin-top:26px; color:var(--paper-dim); font-size:0.95rem;">Reuniões de 1h a 1h30, por Google Meet, com suporte pelo WhatsApp em horário comercial.</p>
   </div>
 </section>
 
@@ -396,7 +411,7 @@ footer a.ig:hover{ color:var(--gold); }
     </div>
 
     <div class="cta">
-      <a class="btn btn-coral" id="wa-diag" href="#" target="_blank" rel="noopener">Agendar meu diagnóstico gratuito</a>
+      <a class="btn btn-coral" id="wa-diag" href="#" target="_blank" rel="noopener">Agendar conversa de diagnóstico gratuita</a>
       <p class="note">Você fala comigo direto pelo WhatsApp — sem formulário, sem espera.</p>
     </div>
   </div>
@@ -412,29 +427,36 @@ footer a.ig:hover{ color:var(--gold); }
       <div class="benefit">
         <span class="ico">01</span>
         <div>
-          <h3>Painel Financeiro personalizado</h3>
-          <p>Orçamento, dívidas, metas e investimentos organizados num só lugar, atualizado com você a cada encontro.</p>
+          <h3>Reuniões individuais online</h3>
+          <p>Encontros de 1h a 1h30, comigo, sem intermediários — no ritmo que sua fase pede.</p>
         </div>
       </div>
       <div class="benefit">
         <span class="ico">02</span>
         <div>
-          <h3>Análise completa do cartão de crédito</h3>
-          <p>Dívida por cartão, gastos por categoria e um plano de ação claro pra parar de rodar em círculos.</p>
+          <h3>App e plataforma de planejamento financeiro</h3>
+          <p>Acompanhe orçamento, dívidas e metas em tempo real, com integração bancária opcional.</p>
         </div>
       </div>
       <div class="benefit">
         <span class="ico">03</span>
         <div>
-          <h3>Plano de Ação atualizado a cada etapa</h3>
-          <p>Passos específicos pra sua realidade — nunca uma lista genérica de "dicas financeiras".</p>
+          <h3>Plano de Ação após cada reunião</h3>
+          <p>Passos específicos pra sua realidade, atualizados a cada encontro — nunca uma lista genérica de "dicas financeiras".</p>
         </div>
       </div>
       <div class="benefit">
         <span class="ico">04</span>
         <div>
-          <h3>Suporte ilimitado pelo WhatsApp</h3>
-          <p>Durante toda a mentoria, suas dúvidas não esperam até o próximo encontro.</p>
+          <h3>Suporte pelo WhatsApp em horário comercial</h3>
+          <p>Suas dúvidas não esperam até a próxima reunião.</p>
+        </div>
+      </div>
+      <div class="benefit">
+        <span class="ico">05</span>
+        <div>
+          <h3>Materiais de apoio numa pasta exclusiva</h3>
+          <p>Tudo documentado e organizado só pra você, disponível sempre que precisar consultar.</p>
         </div>
       </div>
     </div>
@@ -450,31 +472,10 @@ footer a.ig:hover{ color:var(--gold); }
     <div class="about" style="margin-top:36px;">
       <div class="avatar"><img src="data:image/jpeg;base64,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" alt="Foto de Kariny" loading="lazy"></div>
       <div class="about-body">
-        <p>Sou contadora, graduada em Ciências Contábeis e pós-graduada em Finanças e Controladoria. Depois de anos vendo de perto como a desorganização financeira pesa — não só em empresas, mas na vida das pessoas por trás delas — me certifiquei como Educadora Financeira Profissional (FinPro) pra ajudar diretamente quem sente esse peso no dia a dia.</p>
-        <p>Atendo exclusivamente mulheres. É onde encontro a abertura de conversa que esse trabalho precisa: falar de dinheiro é, quase sempre, falar de outra coisa por trás.</p>
+        <p>Sou contadora, graduada em Ciências Contábeis e pós-graduada em Finanças e Controladoria. Depois de anos vendo de perto como a desorganização financeira pesa — não só em empresas, mas na vida das pessoas por trás delas — me certifiquei como Educadora Financeira Profissional (FinPro) e obtive a Certificação Oficial do Método Vista, pra ajudar diretamente quem sente esse peso no dia a dia.</p>
+        <p>Atendo principalmente mulheres — mas casais que querem organizar a vida financeira juntos também têm espaço aqui. O que importa é a disposição de olhar pra isso de frente, com clareza.</p>
         <p class="sig">Meu papel aqui nunca é te dizer o que você "tem que" fazer. É te dar clareza e um método — a decisão de seguir é sempre sua.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="investimento">
-  <div class="wrap">
-    <div class="head">
-      <p class="eyebrow">INVESTIMENTO</p>
-      <h2>Vagas limitadas — a mentoria é conduzida por mim, do início ao fim.</h2>
-    </div>
-    <div class="invest-card">
-      <div>
-        <h3>Um plano definido na conversa, não numa tabela genérica</h3>
-        <p>O valor é combinado na conversa inicial, sem letras miúdas — porque o acompanhamento é sempre pensado pra sua situação específica, não pra um pacote fechado.</p>
-        <div class="invest-facts">
-          <div><span class="n num">1h30</span><span class="l">Por encontro</span></div>
-          <div><span class="n num">100%</span><span class="l">Personalizado</span></div>
-          <div><span class="n num">WhatsApp</span><span class="l">Suporte contínuo</span></div>
-        </div>
-      </div>
-      <a class="btn btn-coral" id="wa-invest" href="#" target="_blank" rel="noopener">Falar sobre valores</a>
     </div>
   </div>
 </section>
@@ -497,8 +498,8 @@ footer a.ig:hover{ color:var(--gold); }
       <div class="tl-row">
         <span class="tl-num num">02</span>
         <div class="tl-body">
-          <h3>E se eu não tiver disciplina pra seguir o método?</h3>
-          <p>A mentoria não faz o trabalho por você: seu comprometimento é essencial pro resultado acontecer. O que eu ofereço é estrutura, orientação e suporte constante entre os encontros — pra tornar esse esforço mais fácil de manter do que tentar sozinha.</p>
+          <h3>Preciso ter muito dinheiro pra começar?</h3>
+          <p>Não. A mentoria não é só pra quem já tem sobra — é pra quem quer organizar o que tem, seja pouco ou muito. O que importa é a vontade de entender e mudar sua relação com o dinheiro.</p>
         </div>
       </div>
       <div class="tl-row">
@@ -511,12 +512,47 @@ footer a.ig:hover{ color:var(--gold); }
       <div class="tl-row">
         <span class="tl-num num">04</span>
         <div class="tl-body">
-          <h3>Quanto tempo dura a mentoria?</h3>
-          <p>O acompanhamento acontece em encontros de 1h30 por Google Meet, com suporte contínuo pelo WhatsApp entre eles. O ritmo é combinado individualmente, porque cada situação financeira pede um tempo diferente.</p>
+          <h3>E se eu não tiver disciplina pra seguir o método?</h3>
+          <p>A mentoria não faz o trabalho por você: seu comprometimento é essencial pro resultado acontecer. O que eu ofereço é estrutura, orientação e suporte constante entre os encontros — pra tornar esse esforço mais fácil de manter do que tentar sozinha.</p>
         </div>
       </div>
       <div class="tl-row">
         <span class="tl-num num">05</span>
+        <div class="tl-body">
+          <h3>Como funciona o atendimento?</h3>
+          <p>Todas as reuniões são online, por Google Meet, no horário que a gente combinar — sem precisar se deslocar. Entre um encontro e outro, você tem suporte pelo WhatsApp em horário comercial e os materiais ficam numa pasta exclusiva, sempre à mão.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-num num">06</span>
+        <div class="tl-body">
+          <h3>Em quanto tempo vejo resultado?</h3>
+          <p>Muitas clientes já sentem diferença nas primeiras semanas, só de ter clareza sobre pra onde o dinheiro vai. Resultados mais consistentes — dívidas quitadas, reserva formada, investimentos organizados — costumam aparecer ao longo da Fase 1, nos primeiros 6 meses.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-num num">07</span>
+        <div class="tl-body">
+          <h3>Você tem acesso ao meu dinheiro ou às minhas contas?</h3>
+          <p>Não, em nenhum momento. Meu papel é te orientar e acompanhar — você sempre mantém o controle total das suas contas, senhas e investimentos. Meu trabalho é te ajudar a decidir melhor, não movimentar nada por você.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-num num">08</span>
+        <div class="tl-body">
+          <h3>Quanto custa a mentoria?</h3>
+          <p>O valor varia de acordo com o seu momento e com a fase em que você está. Prefiro apresentar isso com calma, numa conversa de diagnóstico gratuita e sem compromisso, pra te mostrar exatamente o que faz sentido pro seu caso.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-num num">09</span>
+        <div class="tl-body">
+          <h3>Quanto tempo dura o acompanhamento?</h3>
+          <p>Não tem prazo fixo. Funciona em fases — começa com reuniões mensais nos primeiros 6 meses, depois se ajusta conforme sua necessidade. Você continua enquanto fizer sentido pra você, sem multa de cancelamento.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-num num">10</span>
         <div class="tl-body">
           <h3>Como funciona o diagnóstico gratuito?</h3>
           <p>É uma conversa rápida comigo, sem custo e sem compromisso — sem planilha pra preencher antes. A ideia é te dar clareza sobre onde você está agora e ver, juntas, se a mentoria faz sentido pro seu momento.</p>
@@ -532,7 +568,7 @@ footer a.ig:hover{ color:var(--gold); }
     <h2>O primeiro passo é uma conversa rápida comigo.</h2>
     <p>Sem planilha pra preencher antes, sem compromisso. Só clareza sobre onde você está agora.</p>
     <div class="cta-row">
-      <a class="btn btn-coral" id="wa-final" href="#" target="_blank" rel="noopener">Quero meu diagnóstico gratuito</a>
+      <a class="btn btn-coral" id="wa-final" href="#" target="_blank" rel="noopener">Agendar conversa de diagnóstico gratuita</a>
     </div>
   </div>
 </section>
@@ -551,17 +587,14 @@ footer a.ig:hover{ color:var(--gold); }
   (function(){
     // ---- WhatsApp links: single source of truth for the number ----
     var WHATSAPP_NUMBER = "5566992568559";
-    var msgDiag = encodeURIComponent("Oi, Kariny! Vi seu site e quero agendar meu diagnóstico financeiro gratuito e sem compromisso.");
-    var msgInvest = encodeURIComponent("Oi, Kariny! Vi seu site e quero saber mais sobre valores da mentoria financeira.");
+    var msgDiag = encodeURIComponent("Oi, Kariny! Vim pelo site e quero agendar uma conversa de diagnóstico.");
     var base = "https://wa.me/" + WHATSAPP_NUMBER + "?text=";
 
     var d1 = document.getElementById('wa-diag');
     var d2 = document.getElementById('wa-final');
-    var d3 = document.getElementById('wa-invest');
     var d4 = document.getElementById('wa-footer');
     if(d1) d1.href = base + msgDiag;
     if(d2) d2.href = base + msgDiag;
-    if(d3) d3.href = base + msgInvest;
     if(d4) d4.href = base + msgDiag;
 
     // ---- reveal on scroll ----
