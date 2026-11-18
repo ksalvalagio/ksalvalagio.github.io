@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kagio • Turma de Abertura</title>
+<title>Kagio • Mentoria Financeira</title>
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACNUlEQVR4nO2UsWsUQRTGv/dmdnZ29/bu9sKdXgISi4BJIWglYuP/oFiIjaXov6DYxdrO0tJKBJuQfyEWthaWQi7R5Exu93ZnZyzOAxXE3U00CPc1AzOP9/3mm8cACy10xqIqRSw86Yfdm8xi6ECiLLJ3eXr43jnrAICI4IfJNeHpy9PJwSuTpweAqwQgqxTZsjC2LD6F7XNbtjQYH38O5+YAwTkH4ekbZZFu1zGvJSGU1xuuT+Ol1Te/nrFUyvOjfpO+XLmSwAAUQOLnfYIQKimmk9HfBfiNpKc7pcn2m8Z+IgAWngTgbGlM4x6N3YkgpEpMno0b92gCQOQ8ABDSD0qTfznpxNdPwLk9FlJKT1+0ZdE4+sYAziEP4sFDHQ+2iEWlj+xUAQDHgMukVCtBa+nWbK85R4MZYJWORy/KIvuoo+SlkH5wkjmoD8A8sNbY7Gj/NrGnw3jw7PvJvwFw1k4BIEsPdvLs6K0K249U0FmbpVAfoj4AyAIEOIfsaHTfOYcw7r9mltzkKeoAOAAWQDk3KqbHu3l6+ER4ekPH/QezslkKxLJS78oARMIHEQsWaz9GnX4dbZZmuqej5LnS8eocLmgt3T01AGLBftC5Y435AILQUfcqEQFEKE2eT8a71wlA2FnekSrsqqC9qnT7adXL/RmAmJglEzERM7GQAjRPYbb6YXejN1wvessbzo+SK6dmXkfC01Grd2EzGV4qWsnK4zOBAACpwm7UPn/vzAAWWui/0jclorMeQBZqqgAAAABJRU5ErkJggg==">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
@@ -105,7 +105,7 @@
 
   .why{ background:var(--ink-soft); border-top:1px solid var(--ink-line); border-bottom:1px solid var(--ink-line); }
   .why-grid{ margin-top:32px; display:grid; gap:18px; }
-  @media (min-width:640px){ .why-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (min-width:720px){ .why-grid{ grid-template-columns:repeat(3,1fr); } }
   .why-item{ padding:20px; background:var(--ink); border:1px solid var(--ink-line); border-radius:14px; }
   .why-item .q{ font-weight:900; color:var(--gold); font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em; }
   .why-item p{ margin-top:8px; font-size:0.92rem; color:var(--paper-dim); }
@@ -120,6 +120,12 @@
   footer .fine{ margin-top:14px; font-size:0.74rem; color:var(--paper-dimmer); }
   footer a.ig{ text-decoration:none; color:var(--paper-dim); }
   footer a.ig:hover{ color:var(--gold); }
+  .btn-ghost{ background:transparent; color:var(--paper); border-color:var(--ink-line-strong); }
+  .btn-ghost:hover{ border-color:var(--gold); color:var(--gold); }
+  .offer-card .alt{ display:block; margin-top:14px; font-size:0.86rem; color:var(--paper-dim); }
+  .offer-card .alt a{ color:var(--gold); }
+  footer a.home{ display:block; margin-top:10px; font-size:0.8rem; color:var(--paper-dimmer); text-decoration:none; }
+  footer a.home:hover{ color:var(--gold); }
 </style>
 </head>
 <body>
@@ -131,13 +137,13 @@
 
 <header class="hero">
   <div class="wrap">
-    <p class="eyebrow">TURMA DE ABERTURA</p>
-    <h1>As primeiras vagas da mentoria Kagio estão abrindo — <em>com condições especiais</em>.</h1>
-    <p class="lede">Essa primeira turma vai ter um jeito diferente de entrar: prioridade e condições que não vão se repetir depois. Quem quiser saber os detalhes antes de todo mundo entra na lista de espera.</p>
+    <p class="eyebrow">MENTORIA FINANCEIRA INDIVIDUAL</p>
+    <h1>Planejamento financeiro com <em>acompanhamento contínuo</em>, comigo do início ao fim.</h1>
+    <p class="lede">Um plano feito pra sua realidade, em 3 fases, sem prazo mínimo e sem multa de cancelamento. O primeiro passo é uma conversa de diagnóstico gratuita.</p>
     <div class="badge-row">
-      <span class="badge">Vagas limitadas</span>
       <span class="badge">Acompanhamento individual, comigo</span>
-      <span class="badge">Prioridade pra quem entra na lista</span>
+      <span class="badge">Reuniões online pelo Google Meet</span>
+      <span class="badge">Sem prazo mínimo</span>
     </div>
   </div>
 </header>
@@ -145,31 +151,32 @@
 <section id="oferta">
   <div class="wrap">
     <div class="offer-card">
-      <span class="tag">Lista de espera</span>
-      <p style="margin-top:20px; font-size:1.2rem; font-weight:800; color:var(--paper);">Garanta sua prioridade na turma de abertura</p>
-      <p class="note">Ao entrar na lista, você é avisada em primeira mão quando as vagas abrirem — com as condições especiais que só valem pra essa primeira turma.</p>
-      <a class="btn btn-coral" id="wa-offer" href="https://forms.gle/tZM6BGJRB6anDbRK7" target="_blank" rel="noopener">Quero entrar na lista de espera</a>
+      <span class="tag">Diagnóstico gratuito</span>
+      <p style="margin-top:20px; font-size:1.2rem; font-weight:800; color:var(--paper);">Comece por uma conversa de diagnóstico</p>
+      <p class="note">Cerca de 50 minutos, online, sem custo e sem compromisso. A gente olha juntas o seu momento financeiro e vê se a mentoria faz sentido pra você.</p>
+      <a class="btn btn-coral" id="wa-offer" href="#" target="_blank" rel="noopener">Agendar conversa de diagnóstico gratuita</a>
+      <span class="alt">Prefere começar sozinha? <a href="https://meuplanejador.com/p/kariny/diagnostico" target="_blank" rel="noopener">Faça o diagnóstico financeiro online</a>.</span>
     </div>
 
     <div class="includes">
       <div class="item">
         <span class="ico">01</span>
         <div>
-          <strong>Diagnóstico financeiro completo</strong>
-          <p>Seu raio-x financeiro, sem julgamento, logo no início do acompanhamento.</p>
+          <strong>Reuniões individuais online</strong>
+          <p>Encontros de 1h a 1h30, comigo, no ritmo que a sua fase pede.</p>
         </div>
       </div>
       <div class="item">
         <span class="ico">02</span>
         <div>
-          <strong>Painel Financeiro personalizado</strong>
-          <p>Orçamento, dívidas, metas e investimentos organizados num só lugar.</p>
+          <strong>App e plataforma de planejamento</strong>
+          <p>Orçamento, dívidas e metas em tempo real, com integração bancária opcional.</p>
         </div>
       </div>
       <div class="item">
         <span class="ico">03</span>
         <div>
-          <strong>Plano de Ação sob medida</strong>
+          <strong>Plano de Ação após cada reunião</strong>
           <p>Passos específicos pra sua realidade, nunca uma lista genérica.</p>
         </div>
       </div>
@@ -177,7 +184,7 @@
         <span class="ico">04</span>
         <div>
           <strong>Suporte pelo WhatsApp</strong>
-          <p>Suas dúvidas não esperam até o próximo encontro.</p>
+          <p>Em horário comercial, pra suas dúvidas não esperarem até a próxima reunião.</p>
         </div>
       </div>
     </div>
@@ -187,17 +194,21 @@
 <section class="why">
   <div class="wrap">
     <div class="head">
-      <p class="eyebrow">POR QUE AGORA</p>
-      <h2>Por que entrar na lista agora</h2>
+      <p class="eyebrow">COMO FUNCIONA</p>
+      <h2>Um acompanhamento que evolui com você, em 3 fases</h2>
     </div>
     <div class="why-grid">
       <div class="why-item">
-        <p class="q">Turma de abertura</p>
-        <p>Essa primeira turma tem condições que marcam o início da mentoria Kagio como programa — não vão se repetir nas próximas.</p>
+        <p class="q">Fase 1 · Construção</p>
+        <p>Meses 1 a 6: uma reunião por mês pra organizar orçamento, dívidas, patrimônio, planos e sonhos.</p>
       </div>
       <div class="why-item">
-        <p class="q">Vagas limitadas</p>
-        <p>O acompanhamento é individual e conduzido por mim do início ao fim, então o número de vagas por turma é limitado — quem está na lista tem prioridade.</p>
+        <p class="q">Fase 2 · Implementação</p>
+        <p>Meses 7 a 12: 3 a 4 reuniões pra ajustar o que precisar, afinar as metas e cuidar da proteção financeira.</p>
+      </div>
+      <div class="why-item">
+        <p class="q">Fase 3 · Acompanhamento</p>
+        <p>A partir do 2º ano: reuniões bimestrais e uma revisão completa por ano, enquanto fizer sentido pra você.</p>
       </div>
     </div>
   </div>
@@ -206,19 +217,30 @@
 <section class="final" id="contato">
   <div class="wrap">
     <p class="eyebrow" style="justify-content:center;">PRÓXIMO PASSO</p>
-    <h2>Entre na lista de espera da turma de abertura.</h2>
-    <p>Leva menos de um minuto — e você fica sabendo em primeira mão quando as vagas abrirem.</p>
-    <a class="btn btn-coral" id="wa-final" href="https://forms.gle/tZM6BGJRB6anDbRK7" target="_blank" rel="noopener">Quero entrar na lista de espera</a>
-    <p class="fine-note">Vagas limitadas para esta primeira turma.</p>
+    <h2>O primeiro passo é uma conversa rápida comigo.</h2>
+    <p>Você fala comigo direto pelo WhatsApp e a gente marca o melhor horário.</p>
+    <a class="btn btn-coral" id="wa-final" href="#" target="_blank" rel="noopener">Agendar conversa de diagnóstico gratuita</a>
+    <p class="fine-note">Sem custo e sem compromisso.</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <a class="ig" href="https://instagram.com/ksalvalagio" target="_blank" rel="noopener">@ksalvalagio</a>
+    <a class="home" href="/">ksalvalagio.com.br</a>
     <p class="fine">© Kagio • Mentoria Financeira</p>
   </div>
 </footer>
+
+<script>
+  (function(){
+    var link = "https://wa.me/5566992568559?text=" + encodeURIComponent("Oi, Kariny! Vim pelo site e quero agendar uma conversa de diagnóstico.");
+    ['wa-offer','wa-final'].forEach(function(id){
+      var a = document.getElementById(id);
+      if(a) a.href = link;
+    });
+  })();
+</script>
 
 </body>
 </html>
