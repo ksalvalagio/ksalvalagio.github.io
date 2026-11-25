@@ -312,6 +312,42 @@
   .success p{ margin-top:10px; color:rgba(242,239,234,0.75); font-size:0.95rem; }
   .success .btn{ margin-top:22px; }
 
+
+  /* SONHOS */
+  .dreams{ margin-top:40px; display:grid; gap:16px; }
+  @media (min-width:640px){ .dreams{ grid-template-columns:repeat(2,1fr); } }
+  @media (min-width:1000px){ .dreams{ grid-template-columns:repeat(4,1fr); } }
+  .dream{ background:var(--card); border:1px solid var(--line); border-radius:18px; padding:26px 22px; }
+  .dream .di{ width:46px; height:46px; border-radius:14px; background:rgba(176,141,87,0.14); color:var(--gold);
+    display:flex; align-items:center; justify-content:center; }
+  .dream .di svg{ width:24px; height:24px; }
+  .dream h3{ margin-top:16px; font-size:1.05rem; }
+  .dream p{ margin-top:6px; font-size:0.9rem; color:var(--fg-dim); }
+  .dreams-note{ margin-top:28px; font-size:1rem; color:var(--fg-dim); max-width:60ch; }
+  .dreams-note strong{ color:var(--fg); }
+
+  /* CONVITE NO MEIO */
+  .mid-cta{
+    margin-top:32px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:18px;
+    background:var(--navy); color:var(--cream); border-radius:20px; padding:24px 26px;
+  }
+  .mid-cta p{ font-weight:700; font-size:1.05rem; }
+  .mid-cta p span{ display:block; font-weight:400; font-size:0.9rem; color:rgba(242,239,234,0.70); margin-top:2px; }
+
+  /* PASSO A PASSO DA CONVERSA */
+  .steps{ margin-top:28px; display:grid; gap:0; }
+  .step{ display:grid; grid-template-columns:44px 1fr; gap:16px; position:relative; padding-bottom:22px; }
+  .step:not(:last-child)::before{ content:""; position:absolute; left:21px; top:44px; bottom:4px; width:1px; background:var(--line-strong); }
+  .step .sn{ width:44px; height:44px; border-radius:50%; background:var(--navy); color:var(--gold);
+    display:flex; align-items:center; justify-content:center; font-weight:800; }
+  .step h3{ font-size:1rem; padding-top:10px; }
+  .step p{ margin-top:4px; font-size:0.92rem; color:var(--fg-dim); }
+
+  /* VALORES NO SOBRE */
+  .values{ margin-top:22px; display:flex; flex-wrap:wrap; gap:8px; }
+  .values span{ font-size:0.8rem; font-weight:600; padding:8px 14px; border-radius:999px; background:var(--card-2); border:1px solid var(--line); }
+  .values span b{ color:var(--accent-text); }
+
   /* RODAPÉ */
   footer{ padding-block:48px 40px; border-top:1px solid rgba(242,239,234,0.10); }
   footer .wrap{ display:grid; gap:28px; }
@@ -428,42 +464,36 @@
   </div>
 </section>
 
-<section id="valor" class="s-dark">
+<section id="sonhos" class="s-dark">
   <div class="wrap">
     <div class="head">
-      <p class="eyebrow">POR QUE TER UMA MENTORA FINANCEIRA</p>
-      <h2>Você não precisa resolver isso sozinha.</h2>
+      <p class="eyebrow">ONDE A GENTE QUER CHEGAR</p>
+      <h2>Organizar o dinheiro é o caminho. O destino é o que você sonha.</h2>
+      <p>Quando o dinheiro tem um plano, ele deixa de ser preocupação e passa a trabalhar pelo que importa pra você.</p>
     </div>
-    <div class="list-2">
-      <div class="li">
-        <span class="ico">01</span>
-        <div>
-          <h3>Clareza sobre a sua situação real</h3>
-          <p>Diagnóstico completo do seu momento financeiro, sem julgamento.</p>
-        </div>
+    <div class="dreams">
+      <div class="dream" data-animate>
+        <span class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M10 19.5v-5h4v5"/></svg></span>
+        <h3>A casa própria</h3>
+        <p>Sair do "um dia" e ter um plano com valor, prazo e caminho pra chegar lá.</p>
       </div>
-      <div class="li">
-        <span class="ico">02</span>
-        <div>
-          <h3>Mudança de comportamento, não só de planilha</h3>
-          <p>A gente trabalha a sua relação com o dinheiro, não só os números.</p>
-        </div>
+      <div class="dream" data-animate>
+        <span class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 13.5 21 6.5l-4.5 13-4-5.5-6.5-1.5"/><path d="m12.5 14 8.5-7.5"/></svg></span>
+        <h3>A viagem que vive ficando pra depois</h3>
+        <p>Viajar com o dinheiro separado e sem culpa, sem parcelar o ano inteiro.</p>
       </div>
-      <div class="li">
-        <span class="ico">03</span>
-        <div>
-          <h3>Visão de quem entende pessoa física e empresa</h3>
-          <p>Experiência de contadora: seu bolso e seu negócio, juntos.</p>
-        </div>
+      <div class="dream" data-animate>
+        <span class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v5.5c0 4.5 3.2 8 7.5 9.5 4.3-1.5 7.5-5 7.5-9.5V6L12 3Z"/><path d="m8.8 12 2.2 2.2 4.2-4.4"/></svg></span>
+        <h3>Uma reserva pra dormir tranquila</h3>
+        <p>Saber que um imprevisto não vira dívida nem desespero.</p>
       </div>
-      <div class="li">
-        <span class="ico">04</span>
-        <div>
-          <h3>Menos sozinha, mais segura nas decisões</h3>
-          <p>Acompanhamento contínuo, não uma consultoria pontual.</p>
-        </div>
+      <div class="dream" data-animate>
+        <span class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7.5" width="18" height="12" rx="2"/><path d="M8.5 7.5V5.5a1.5 1.5 0 0 1 1.5-1.5h4a1.5 1.5 0 0 1 1.5 1.5v2"/><path d="M3 12.5h18"/></svg></span>
+        <h3>Saber quanto é seu de verdade</h3>
+        <p>Separar a vida pessoal do negócio e enxergar o quanto sobra pra você.</p>
       </div>
     </div>
+    <p class="dreams-note">Cada plano é montado a partir <strong>dos seus sonhos</strong>, não de uma fórmula pronta.</p>
   </div>
 </section>
 
@@ -508,6 +538,10 @@
       </div>
       <p class="small-note">Reuniões de 1h a 1h30 por Google Meet, com suporte pelo WhatsApp em horário comercial.</p>
     </div>
+    <div class="mid-cta">
+      <p>Quer saber por onde você começaria?<span>Na conversa gratuita, a gente olha o seu momento e vê se faz sentido.</span></p>
+      <a class="btn btn-gold" href="#contato">Quero uma conversa gratuita</a>
+    </div>
   </div>
 </section>
 
@@ -515,42 +549,49 @@
   <div class="wrap">
     <div class="head">
       <p class="eyebrow">O QUE VOCÊ RECEBE</p>
-      <h2>Mais do que conversa: ferramentas que continuam com você.</h2>
+      <h2>Mais do que conversa: um acompanhamento que continua com você.</h2>
     </div>
     <div class="list-2">
       <div class="li">
         <span class="ico">01</span>
         <div>
-          <h3>Reuniões individuais online</h3>
-          <p>Encontros de 1h a 1h30, comigo, sem intermediários, no ritmo que a sua fase pede.</p>
+          <h3>Reuniões individuais online, comigo</h3>
+          <p>Encontros de 1h a 1h30, sem intermediários e sem julgamento, no ritmo que a sua fase pede.</p>
         </div>
       </div>
       <div class="li">
         <span class="ico">02</span>
         <div>
-          <h3>App e plataforma de planejamento financeiro</h3>
-          <p>Acompanhe orçamento, dívidas e metas em tempo real, com integração bancária opcional.</p>
+          <h3>Plano de Ação depois de cada reunião</h3>
+          <p>Passos específicos pra sua realidade, guardados numa pasta exclusiva sua. Nunca uma lista genérica de "dicas".</p>
         </div>
       </div>
       <div class="li">
         <span class="ico">03</span>
         <div>
-          <h3>Plano de Ação após cada reunião</h3>
-          <p>Passos específicos pra sua realidade, atualizados a cada encontro. Nunca uma lista genérica de "dicas financeiras".</p>
+          <h3>App e plataforma de planejamento</h3>
+          <p>Orçamento, dívidas e metas em tempo real, com integração bancária opcional.</p>
         </div>
       </div>
       <div class="li">
         <span class="ico">04</span>
         <div>
-          <h3>Suporte pelo WhatsApp em horário comercial</h3>
-          <p>Suas dúvidas não esperam até a próxima reunião.</p>
+          <h3>Suporte pelo WhatsApp</h3>
+          <p>Em horário comercial, pra suas dúvidas não esperarem até a próxima reunião.</p>
         </div>
       </div>
       <div class="li">
         <span class="ico">05</span>
         <div>
-          <h3>Materiais de apoio numa pasta exclusiva</h3>
-          <p>Tudo documentado e organizado só pra você, disponível sempre que precisar.</p>
+          <h3>Visão de contadora, pessoa física e empresa</h3>
+          <p>Seu bolso e seu negócio olhados juntos: pró-labore, retiradas, impostos e o que sobra de verdade.</p>
+        </div>
+      </div>
+      <div class="li">
+        <span class="ico">06</span>
+        <div>
+          <h3>Comportamento, não só planilha</h3>
+          <p>A gente trabalha a sua relação com o dinheiro, que é o que faz a mudança durar.</p>
         </div>
       </div>
     </div>
@@ -568,8 +609,14 @@
         <div class="big"><img src="assets/kariny-aberta.jpg" alt="Kariny Salvalagio sorrindo, numa rua com prédios antigos ao fundo" loading="lazy" width="900" height="1200"></div>
       </div>
       <div class="about-body">
-        <p>Sou contadora, graduada em Ciências Contábeis e pós-graduada em Finanças e Controladoria. Depois de anos vendo de perto como a desorganização financeira pesa — não só em empresas, mas na vida das pessoas por trás delas — me certifiquei como Educadora Financeira Profissional (FinPro) e obtive a Certificação Oficial do Método Vista, pra ajudar diretamente quem sente esse peso no dia a dia.</p>
+        <p>Sou contadora e, no dia a dia, vejo de perto a mesma cena se repetir: gente que trabalha muito, fatura bem e mesmo assim não sabe pra onde o dinheiro vai. Muitas vezes a conta da casa e a da empresa estão misturadas, e a sensação é de nunca sair do lugar.</p>
+        <p>Foi por isso que me especializei em finanças pessoais: fiz pós-graduação em Finanças e Controladoria, me certifiquei como Educadora Financeira Profissional (FinPro) e obtive a Certificação Oficial do Método Vista. E, antes de levar o método pra alguém, apliquei primeiro na minha própria vida financeira.</p>
         <p>Atendo principalmente mulheres, mas casais que querem organizar a vida financeira juntos também têm espaço aqui. O que importa é a disposição de olhar pra isso de frente, com clareza.</p>
+        <div class="values">
+          <span><b>✓</b> Sem julgamento</span>
+          <span><b>✓</b> Visão de contadora, PF e PJ</span>
+          <span><b>✓</b> Método que apliquei primeiro em mim</span>
+        </div>
         <p class="sig">Meu papel aqui nunca é te dizer o que você "tem que" fazer. É te dar clareza e um método, e caminhar junto enquanto você decide o que faz sentido pra você.</p>
       </div>
     </div>
@@ -632,12 +679,10 @@
     <div>
       <p class="eyebrow">CONVERSA DE DIAGNÓSTICO GRATUITA</p>
       <h2>O primeiro passo é uma conversa comigo, sem custo e sem compromisso.</h2>
-      <p style="margin-top:14px; color:var(--fg-dim);">Na conversa, a gente olha juntas 4 pontos. Só isso já costuma trazer clareza sobre onde você realmente está:</p>
-      <div class="talk-points">
-        <div class="tp"><span class="q num">01</span><p>Pra onde vai o seu dinheiro hoje.</p></div>
-        <div class="tp"><span class="q num">02</span><p>Quanto você deve, no total, se souber responder na hora.</p></div>
-        <div class="tp"><span class="q num">03</span><p>O que mais pesa: uma dívida específica, a falta de organização ou a sensação de que nunca sobra.</p></div>
-        <div class="tp"><span class="q num">04</span><p>O que você já tentou fazer sozinha, e por que não funcionou até agora.</p></div>
+      <div class="steps">
+        <div class="step"><span class="sn">1</span><div><h3>Você deixa seu contato</h3><p>Leva menos de um minuto, aqui no formulário.</p></div></div>
+        <div class="step"><span class="sn">2</span><div><h3>A gente conversa</h3><p>Cerca de 50 minutos, online e gratuito. Olhamos juntas pra onde vai o seu dinheiro, o que mais pesa hoje e o que você já tentou.</p></div></div>
+        <div class="step"><span class="sn">3</span><div><h3>Você decide, com calma</h3><p>Se fizer sentido, te apresento a proposta. Se não, você sai com mais clareza do que entrou, sem nenhum compromisso.</p></div></div>
       </div>
 
       <a class="wa-card js-wa" href="#" target="_blank" rel="noopener">
