@@ -129,6 +129,8 @@
   .hero h1 em{ font-style:normal; color:var(--gold); }
   .hero .lede{ margin-top:22px; font-size:1.08rem; color:var(--fg-dim); max-width:48ch; }
   .cta-row{ display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+  .online-badge{ margin-top:22px; display:inline-flex; align-items:center; gap:10px; font-size:0.86rem; font-weight:700; color:var(--fg); }
+  .online-badge .dot{ width:8px; height:8px; border-radius:50%; background:var(--wa); box-shadow:0 0 0 4px rgba(37,211,102,0.18); }
   .credentials{ margin-top:34px; display:flex; flex-wrap:wrap; gap:8px; }
   .credentials span{
     font-size:0.76rem; padding:7px 12px; border:1px solid var(--line-strong); border-radius:999px; color:var(--fg-dim);
@@ -274,7 +276,7 @@
   .form-card .sub{ margin-top:8px; font-size:0.9rem; color:rgba(242,239,234,0.70); }
   .form{ margin-top:24px; display:grid; gap:16px; }
   .field label, .field .lbl{ display:block; font-size:0.8rem; font-weight:700; letter-spacing:0.02em; margin-bottom:7px; color:rgba(242,239,234,0.85); }
-  .field input[type=text], .field input[type=tel], .field select, .field textarea{
+  .field input[type=text], .field input[type=tel], .field input[type=email], .field select, .field textarea{
     width:100%; font:inherit; font-size:0.95rem; color:var(--cream); background:var(--navy-2);
     border:1px solid rgba(242,239,234,0.18); border-radius:12px; padding:13px 14px; transition:border-color .15s, box-shadow .15s;
   }
@@ -296,10 +298,25 @@
   }
   .pills input:checked + span{ background:var(--gold); border-color:var(--gold); color:var(--navy); }
   .pills input:focus-visible + span{ box-shadow:0 0 0 3px rgba(176,141,87,0.35); }
+  .progress{ margin-top:22px; display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+  .progress .pg{ font-size:0.72rem; font-weight:700; letter-spacing:0.04em; color:rgba(242,239,234,0.45); }
+  .progress .pg::before{ content:""; display:block; height:4px; border-radius:4px; background:rgba(242,239,234,0.14); margin-bottom:8px; transition:background .25s; }
+  .progress .pg.on{ color:var(--cream); }
+  .progress .pg.on::before{ background:var(--gold); }
+  .fstep{ display:none; gap:16px; }
+  .fstep.on{ display:grid; animation:fadeIn .25s ease; }
+  @keyframes fadeIn{ from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:none; } }
+  .fnav{ display:flex; gap:10px; margin-top:4px; }
+  .fnav .btn{ flex:1; }
+  .fnav .btn-back{ flex:0 0 auto; background:transparent; color:var(--cream); border-color:rgba(242,239,234,0.25); }
+  .fnav .btn-back:hover{ border-color:var(--gold); color:var(--gold); }
+  .online-note{ display:flex; align-items:center; gap:10px; font-size:0.85rem; padding:12px 14px; border-radius:12px;
+    background:rgba(37,211,102,0.08); border:1px solid rgba(37,211,102,0.25); color:rgba(242,239,234,0.9); }
+  .online-note .dot{ width:8px; height:8px; border-radius:50%; background:var(--wa); flex:none; }
   .consent{ display:flex; gap:10px; align-items:flex-start; font-size:0.8rem; color:rgba(242,239,234,0.70); }
   .consent input{ margin-top:3px; accent-color:var(--gold); width:16px; height:16px; flex:none; }
   .hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
-  .form .btn{ width:100%; padding-block:16px; font-size:0.95rem; }
+  .form .btn{ padding-block:15px; font-size:0.95rem; }
   .form .err{ font-size:0.82rem; color:#F0B8A8; display:none; }
   .form .err.show{ display:block; }
   .success{ display:none; text-align:center; padding:18px 4px 6px; }
@@ -419,6 +436,7 @@
         <a class="btn btn-gold" href="#contato">Quero uma conversa gratuita</a>
         <a class="btn btn-ghost" href="#metodo">Como funciona ↓</a>
       </div>
+      <p class="online-badge"><span class="dot"></span>Atendimento 100% online, de qualquer cidade</p>
       <div class="credentials">
         <span>Contadora</span>
         <span>Pós-graduada em Finanças e Controladoria</span>
@@ -427,7 +445,7 @@
       </div>
     </div>
 
-    <div class="portrait" data-animate>
+    <div class="portrait">
       <div class="arch" aria-hidden="true"></div>
       <img src="assets/kariny-calculadora.webp" alt="Kariny Salvalagio segurando uma calculadora financeira" width="720" height="760">
       <div class="tagcard">
@@ -680,8 +698,8 @@
       <p class="eyebrow">CONVERSA DE DIAGNÓSTICO GRATUITA</p>
       <h2>O primeiro passo é uma conversa comigo, sem custo e sem compromisso.</h2>
       <div class="steps">
-        <div class="step"><span class="sn">1</span><div><h3>Você deixa seu contato</h3><p>Leva menos de um minuto, aqui no formulário.</p></div></div>
-        <div class="step"><span class="sn">2</span><div><h3>A gente conversa</h3><p>Cerca de 50 minutos, online e gratuito. Olhamos juntas pra onde vai o seu dinheiro, o que mais pesa hoje e o que você já tentou.</p></div></div>
+        <div class="step"><span class="sn">1</span><div><h3>Você deixa seu contato</h3><p>Leva uns 2 minutos, aqui no formulário: seu contato, o seu momento e o seu perfil.</p></div></div>
+        <div class="step"><span class="sn">2</span><div><h3>A gente conversa</h3><p>Cerca de 50 minutos, por Google Meet, gratuito. Olhamos juntas pra onde vai o seu dinheiro, o que mais pesa hoje e o que você já tentou.</p></div></div>
         <div class="step"><span class="sn">3</span><div><h3>Você decide, com calma</h3><p>Se fizer sentido, te apresento a proposta. Se não, você sai com mais clareza do que entrou, sem nenhum compromisso.</p></div></div>
       </div>
 
@@ -695,64 +713,138 @@
       </a>
     </div>
 
-    <div class="form-card" data-animate>
+    <div class="form-card">
       <div id="form-wrap">
         <h3>Quero minha conversa gratuita</h3>
-        <p class="sub">Deixe seus dados que eu te chamo no WhatsApp pra gente combinar o melhor horário.</p>
+        <p class="sub">São 3 etapas rápidas. Com elas eu já chego na conversa conhecendo o seu momento, e te chamo no WhatsApp pra combinar o horário.</p>
+        <div class="progress" aria-hidden="true">
+          <span class="pg on" data-pg="1">1 · Contato</span>
+          <span class="pg" data-pg="2">2 · Seu momento</span>
+          <span class="pg" data-pg="3">3 · Seu perfil</span>
+        </div>
         <form class="form" id="lead-form" novalidate>
-          <div class="row-2">
+          <!-- ETAPA 1: CONTATO -->
+          <div class="fstep on" data-step="1">
             <div class="field">
-              <label for="f-nome">Seu nome</label>
-              <input type="text" id="f-nome" name="nome" autocomplete="name" placeholder="Como posso te chamar?" required>
+              <label for="f-nome">Nome completo *</label>
+              <input type="text" id="f-nome" name="nome" autocomplete="name" placeholder="Seu nome e sobrenome" required>
             </div>
             <div class="field">
-              <label for="f-whats">WhatsApp</label>
+              <label for="f-email">E-mail *</label>
+              <input type="email" id="f-email" name="email" autocomplete="email" inputmode="email" placeholder="seuemail@exemplo.com" required>
+            </div>
+            <div class="field">
+              <label for="f-whats">WhatsApp *</label>
               <input type="tel" id="f-whats" name="whatsapp" autocomplete="tel" inputmode="numeric" placeholder="(66) 99999-9999" required>
             </div>
+            <div class="fnav"><button class="btn btn-gold" type="button" data-next="2">Continuar →</button></div>
           </div>
-          <div class="field">
-            <label for="f-para">A mentoria seria para</label>
-            <select id="f-para" name="para">
-              <option value="">Escolha uma opção</option>
-              <option>Para mim</option>
-              <option>Para mim e meu(minha) parceiro(a)</option>
-              <option>Para a minha empresa</option>
-              <option>Para mim e para a minha empresa</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="f-pesa">O que mais pesa hoje?</label>
-            <select id="f-pesa" name="pesa">
-              <option value="">Escolha uma opção</option>
-              <option>O dinheiro nunca sobra</option>
-              <option>Tenho dívidas e não sei por onde começar</option>
-              <option>Misturo as contas pessoais com as do negócio</option>
-              <option>Quero organizar e planejar meus sonhos</option>
-              <option>Outro</option>
-            </select>
-          </div>
-          <div class="field">
-            <span class="lbl">Melhor horário pra eu te chamar</span>
-            <div class="pills" role="radiogroup" aria-label="Melhor horário">
-              <label><input type="radio" name="horario" value="Manhã"><span>Manhã</span></label>
-              <label><input type="radio" name="horario" value="Tarde"><span>Tarde</span></label>
-              <label><input type="radio" name="horario" value="Noite"><span>Noite</span></label>
+
+          <!-- ETAPA 2: SEU MOMENTO -->
+          <div class="fstep" data-step="2">
+            <div class="field">
+              <label for="f-objetivo">Qual o seu principal objetivo hoje? *</label>
+              <select id="f-objetivo" name="objetivo" required>
+                <option value="">Escolha uma opção</option>
+                <option>Organizar as finanças</option>
+                <option>Investir melhor</option>
+                <option>Sair das dívidas</option>
+                <option>Planejar a aposentadoria</option>
+                <option>Planejamento familiar</option>
+                <option>Outro</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-renda">Faixa de renda mensal *</label>
+              <select id="f-renda" name="renda" required>
+                <option value="">Escolha uma opção</option>
+                <option>Até R$ 3.000</option>
+                <option>De R$ 3.000 a R$ 7.000</option>
+                <option>De R$ 7.000 a R$ 15.000</option>
+                <option>De R$ 15.000 a R$ 30.000</option>
+                <option>Acima de R$ 30.000</option>
+              </select>
+            </div>
+            <div class="row-2">
+              <div class="field">
+                <label for="f-cidade">Cidade</label>
+                <input type="text" id="f-cidade" name="cidade" autocomplete="address-level2" placeholder="Ex.: Sorriso/MT">
+              </div>
+              <div class="field">
+                <label for="f-para">A mentoria seria para</label>
+                <select id="f-para" name="para">
+                  <option value="">Escolha uma opção</option>
+                  <option>Para mim</option>
+                  <option>Para mim e meu(minha) parceiro(a)</option>
+                  <option>Para a minha empresa</option>
+                  <option>Para mim e para a minha empresa</option>
+                </select>
+              </div>
+            </div>
+            <p class="online-note"><span class="dot"></span>Atendimento 100% online, por Google Meet, de qualquer cidade.</p>
+            <div class="fnav">
+              <button class="btn btn-back" type="button" data-prev="1">← Voltar</button>
+              <button class="btn btn-gold" type="button" data-next="3">Continuar →</button>
             </div>
           </div>
-          <div class="field">
-            <label for="f-msg">Quer me contar algo? <span style="font-weight:400; opacity:.7;">(opcional)</span></label>
-            <textarea id="f-msg" name="mensagem" placeholder="Fique à vontade"></textarea>
+
+          <!-- ETAPA 3: SEU PERFIL -->
+          <div class="fstep" data-step="3">
+            <div class="field">
+              <label for="f-desafio">Qual o seu maior desafio financeiro hoje? *</label>
+              <select id="f-desafio" name="desafio" required>
+                <option value="">Escolha uma opção</option>
+                <option>Falta de controle financeiro</option>
+                <option>Dívidas acumuladas</option>
+                <option>Não saber investir</option>
+                <option>Falta de planejamento</option>
+                <option>Renda insuficiente</option>
+                <option>Outro</option>
+              </select>
+            </div>
+            <div class="field">
+              <span class="lbl">Já fez planejamento financeiro antes?</span>
+              <div class="pills" role="radiogroup" aria-label="Já fez planejamento financeiro antes?">
+                <label><input type="radio" name="planejou" value="Sim"><span>Sim</span></label>
+                <label><input type="radio" name="planejou" value="Não"><span>Não</span></label>
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-urgencia">Quando quer começar? *</label>
+              <select id="f-urgencia" name="urgencia" required>
+                <option value="">Escolha uma opção</option>
+                <option>Imediatamente</option>
+                <option>Nas próximas semanas</option>
+                <option>No próximo mês</option>
+                <option>Só estou conhecendo</option>
+              </select>
+            </div>
+            <div class="field">
+              <span class="lbl">Melhor horário pra eu te chamar</span>
+              <div class="pills" role="radiogroup" aria-label="Melhor horário">
+                <label><input type="radio" name="horario" value="Manhã"><span>Manhã</span></label>
+                <label><input type="radio" name="horario" value="Tarde"><span>Tarde</span></label>
+                <label><input type="radio" name="horario" value="Noite"><span>Noite</span></label>
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-msg">Quer me contar algo? <span style="font-weight:400; opacity:.7;">(opcional)</span></label>
+              <textarea id="f-msg" name="mensagem" placeholder="Fique à vontade"></textarea>
+            </div>
+            <div class="hp" aria-hidden="true">
+              <label for="f-site">Não preencha</label>
+              <input type="text" id="f-site" name="site" tabindex="-1" autocomplete="off">
+            </div>
+            <label class="consent">
+              <input type="checkbox" id="f-ok" name="consentimento" required>
+              <span>Autorizo a Kagio a usar esses dados só para entrar em contato comigo sobre a mentoria.</span>
+            </label>
+            <div class="fnav">
+              <button class="btn btn-back" type="button" data-prev="2">← Voltar</button>
+              <button class="btn btn-gold" type="submit" id="f-btn">Enviar</button>
+            </div>
           </div>
-          <div class="hp" aria-hidden="true">
-            <label for="f-site">Não preencha</label>
-            <input type="text" id="f-site" name="site" tabindex="-1" autocomplete="off">
-          </div>
-          <label class="consent">
-            <input type="checkbox" id="f-ok" name="consentimento" required>
-            <span>Autorizo a Kagio a usar esses dados só para entrar em contato comigo sobre a mentoria.</span>
-          </label>
-          <p class="err" id="f-err">Preencha seu nome, um WhatsApp válido e marque a autorização, por favor.</p>
-          <button class="btn btn-gold" type="submit" id="f-btn">Quero minha conversa gratuita</button>
+          <p class="err" id="f-err">Preencha os campos com * pra continuar, por favor.</p>
         </form>
       </div>
       <div class="success" id="f-ok-msg" role="status" aria-live="polite">
@@ -812,22 +904,70 @@
       whats.value = out;
     });
 
+    var err = document.getElementById('f-err');
+    var steps = form.querySelectorAll('.fstep');
+    function irPara(n){
+      steps.forEach(function(st){ st.classList.toggle('on', st.dataset.step == n); });
+      document.querySelectorAll('.progress .pg').forEach(function(pg){ pg.classList.toggle('on', +pg.dataset.pg <= n); });
+      err.classList.remove('show');
+      var card = document.querySelector('.form-card');
+      if(card.getBoundingClientRect().top < 0) card.scrollIntoView({block:'start', behavior:'smooth'});
+      var first = form.querySelector('.fstep.on input, .fstep.on select');
+      if(first) first.focus({preventScroll:true});
+    }
+    function etapaOk(n){
+      var msg = '';
+      if(n == 1){
+        var digits = whats.value.replace(/\D/g,'');
+        if(form.nome.value.trim().split(/\s+/).length < 2) msg = 'Coloque seu nome completo, por favor.';
+        else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.value.trim())) msg = 'Confira o seu e-mail, por favor.';
+        else if(digits.length < 10) msg = 'Confira o número do WhatsApp, com DDD.';
+      }
+      if(n == 2 && (!form.objetivo.value || !form.renda.value)) msg = 'Escolha o seu objetivo e a sua faixa de renda, por favor.';
+      if(n == 3){
+        if(!form.desafio.value || !form.urgencia.value) msg = 'Escolha o seu maior desafio e quando quer começar, por favor.';
+        else if(!form.consentimento.checked) msg = 'Marque a autorização pra eu poder entrar em contato.';
+      }
+      if(msg){ err.textContent = msg; err.classList.add('show'); return false; }
+      err.classList.remove('show'); return true;
+    }
+    form.querySelectorAll('[data-next]').forEach(function(bt){
+      bt.addEventListener('click', function(){
+        var atual = +bt.closest('.fstep').dataset.step;
+        if(etapaOk(atual)){
+          irPara(+bt.dataset.next);
+          if(window.gtag) gtag('event','form_etapa',{etapa: +bt.dataset.next});
+        }
+      });
+    });
+    form.querySelectorAll('[data-prev]').forEach(function(bt){
+      bt.addEventListener('click', function(){ irPara(+bt.dataset.prev); });
+    });
+    // Enter na etapa 1 ou 2 avança em vez de enviar
+    form.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' && e.target.tagName !== 'TEXTAREA'){
+        var on = form.querySelector('.fstep.on');
+        var nx = on.querySelector('[data-next]');
+        if(nx){ e.preventDefault(); nx.click(); }
+      }
+    });
+
     form.addEventListener('submit', function(e){
       e.preventDefault();
-      var err = document.getElementById('f-err');
-      var nome = form.nome.value.trim();
-      var digits = whats.value.replace(/\D/g,'');
-      if(!nome || digits.length < 10 || !form.consentimento.checked){ err.classList.add('show'); return; }
-      err.classList.remove('show');
+      if(!etapaOk(1)){ irPara(1); etapaOk(1); return; }
+      if(!etapaOk(2)){ irPara(2); etapaOk(2); return; }
+      if(!etapaOk(3)) return;
       if(form.site.value){ return; } // robô
 
       var btn = document.getElementById('f-btn');
       btn.disabled = true; btn.textContent = 'Enviando...';
 
-      var horario = (form.querySelector('input[name=horario]:checked') || {}).value || '';
+      var pick = function(nm){ return (form.querySelector('input[name=' + nm + ']:checked') || {}).value || ''; };
       var dados = new URLSearchParams({
-        nome: nome, whatsapp: whats.value, para: form.para.value, pesa: form.pesa.value,
-        horario: horario, mensagem: form.mensagem.value.trim(), origem: 'Site', pagina: location.pathname
+        nome: form.nome.value.trim(), email: form.email.value.trim(), whatsapp: whats.value,
+        objetivo: form.objetivo.value, renda: form.renda.value, cidade: form.cidade.value.trim(), para: form.para.value,
+        atendimento: 'Online', desafio: form.desafio.value, planejou: pick('planejou'), urgencia: form.urgencia.value,
+        horario: pick('horario'), mensagem: form.mensagem.value.trim(), origem: 'Site', pagina: location.pathname
       });
 
       function pronto(){
@@ -839,7 +979,7 @@
       fetch(FORM_ENDPOINT, { method:'POST', mode:'no-cors', body:dados })
         .then(pronto)
         .catch(function(){
-          btn.disabled = false; btn.textContent = 'Quero minha conversa gratuita';
+          btn.disabled = false; btn.textContent = 'Enviar';
           err.textContent = 'Não consegui enviar agora. Tente de novo ou me chame no WhatsApp.';
           err.classList.add('show');
         });
@@ -852,6 +992,7 @@
         entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
       }, {threshold:0.15});
       targets.forEach(function(t){ io.observe(t); });
+      setTimeout(function(){ targets.forEach(function(t){ t.classList.add('in'); }); }, 2500); // garantia
     } else {
       targets.forEach(function(t){ t.classList.add('in'); });
     }
