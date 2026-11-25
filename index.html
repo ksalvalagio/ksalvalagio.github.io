@@ -890,6 +890,20 @@
 
     // ---- Formulário ----
     // Endereço do Google Apps Script que grava na planilha (preencher quando estiver publicado)
+    // De onde a pessoa veio (links curtos /bio, /stories, /zap e links de indicação)
+    var ORIGEM = 'Site';
+    try{
+      var q = new URLSearchParams(location.search);
+      var limpa = function(v){ return String(v||'').toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,40); };
+      var src = limpa(q.get('utm_source')), med = limpa(q.get('utm_medium')), camp = limpa(q.get('utm_campaign'));
+      if(src || med || camp){
+        var o = (med === 'indicacao' && camp) ? 'Indicação: ' + camp
+              : 'Site · ' + [src, med].filter(Boolean).join('/') + (camp ? ' · ' + camp : '');
+        sessionStorage.setItem('kagio-origem', o);
+      }
+      ORIGEM = sessionStorage.getItem('kagio-origem') || ORIGEM;
+    }catch(e){}
+
     var FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycby4lMtAhQsCEuGOkdCrc6_UMaidAu2sYBlY-SdfWYzaDCLJNG2SHSjZ2rxnTSlku_la/exec";
 
     var form = document.getElementById('lead-form');
@@ -965,7 +979,7 @@
         nome: form.nome.value.trim(), email: form.email.value.trim(), whatsapp: whats.value,
         objetivo: form.objetivo.value, renda: form.renda.value, cidade: form.cidade.value.trim(), para: form.para.value,
         atendimento: 'Online', desafio: form.desafio.value, planejou: pick('planejou'), urgencia: form.urgencia.value,
-        horario: pick('horario'), mensagem: form.mensagem.value.trim(), origem: 'Site', pagina: location.pathname
+        horario: pick('horario'), mensagem: form.mensagem.value.trim(), origem: ORIGEM, pagina: location.pathname
       });
 
       function pronto(){
