@@ -7,7 +7,18 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-QEPDMB5CDH');
+    // O Analytics recebe o endereço completo (com a origem do link); depois o endereço
+    // da barra fica limpo, sem utm_ nenhum, para quem abriu o link não ver de onde veio.
+    window.KAGIO_BUSCA = location.search;
+    gtag('config', 'G-QEPDMB5CDH', { page_location: location.href });
+    try{
+      if(/[?&]utm_/.test(location.search) && history.replaceState){
+        var kq = new URLSearchParams(location.search);
+        Array.from(kq.keys()).forEach(function(k){ if(k.indexOf('utm_') === 0) kq.delete(k); });
+        var kr = kq.toString();
+        history.replaceState(null, '', location.pathname + (kr ? '?' + kr : '') + location.hash);
+      }
+    }catch(e){}
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -893,11 +904,11 @@
     // De onde a pessoa veio (links curtos /bio, /stories, /zap e links de indicação)
     var ORIGEM = 'Site';
     try{
-      var q = new URLSearchParams(location.search);
+      var q = new URLSearchParams(window.KAGIO_BUSCA || location.search);
       var limpa = function(v){ return String(v||'').toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,40); };
       var src = limpa(q.get('utm_source')), med = limpa(q.get('utm_medium')), camp = limpa(q.get('utm_campaign'));
       if(src || med || camp){
-        var o = (med === 'indicacao' && camp) ? 'Indicação: ' + camp
+        var o = ((med === 'indicacao' || med === 'convite') && camp) ? 'Indicação: ' + camp
               : 'Site · ' + [src, med].filter(Boolean).join('/') + (camp ? ' · ' + camp : '');
         sessionStorage.setItem('kagio-origem', o);
       }
